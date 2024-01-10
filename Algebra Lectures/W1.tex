@@ -1,0 +1,85 @@
+% camiregu 2024-jan-09
+\chapter{Introduction to Groups}
+
+%----------------------------------------------------------------------------------------
+\begin{definition}[a group]
+    A \textbf{group} $G$ is a nonempty set together with a multiplication $G \times G \to G$ satisfying
+    \begin{enumerate}
+        \item $(ab)c = a(bc) \forall a, b, c, \in G$, (Associativity)
+        \item there exists $e \in G$ such that $ea = ae = a \forall a \in G$, (Identity)
+        \item and for every $a \in G$ there exists $b \in G$ such that $ab = ba = e$. (Inverse)
+    \end{enumerate}
+\end{definition}
+
+\begin{example}[a group]
+    Let $\R^* = \R^\dag = \{a \in \R: a \neq 0\}$ together with multiplication on $\R$. \\
+    Associativity is immediate. \\
+    The identity is $1 \in \R^*$. \\
+    For every $a \in \R^*$, $\frac{1}{a} \in \R$ and $a(\frac{1}{a}) = \frac{1}{a}(a) = 1$. \\
+    So $\R^*$ is a group.
+\end{example}
+
+\begin{remark}
+    When we need to highlight the group multiplication we write a group as a pair of the set and the multiplication, e.g., $(\R, +), (\R, \cdot)$. \\
+    From now on, $G$ is \textbf{always} a group.
+\end{remark}
+
+\begin{theorem}
+    There is a unique identity element in G.
+\end{theorem}
+
+\begin{theorem}[Cancellation] \label{thm:Cancellation}
+    Suppose $ba = ca$ for $a,b,c \in G$. Then $b = c$
+\end{theorem}
+\begin{proof}
+    Let $d \in G$ be an inverse for $a$, i.e. $da = ad = e$.
+    Multiplying on the right by $d$, we obtain
+    \begin{align*}
+        (ba)d = (ca)d &\implies b(ad) = c(ad) \\
+        &\implies be = ce \\
+        &\implies b = c.
+    \end{align*}
+\end{proof}
+
+\begin{theorem}[Uniqueness of Inverses]
+    For every $a \in G$ there is a unique element $a\inv \in G$ such that $a a\inv = a\inv a = e$.
+\end{theorem}
+\begin{proof}
+    Suppose $a \in G$ and $b, b' \in G$ are inverses of $a$, then 
+    $$ba = e = b'a \implies b = b'$$ (by \cref{thm:Cancellation})
+\end{proof}
+
+\begin{example}[inverses in different groups]
+    \spacebeforelist
+    \begin{enumerate}
+        \item For $b \in \R^*$, $b\inv = \frac{1}{b}$.
+        \item For $b \in \R$ under addition $b\inv = -b$.
+        \item For $b \in \Z_n$, $b\inv = n - b$.
+    \end{enumerate}
+\end{example}
+
+\begin{example}[groups using a field $F$]
+    \spacebeforelist
+    \begin{enumerate}
+        \item $(F, +)$ is a group (Imitate $(\R, +)$).
+        \item $(F^*, \cdot)$ where $F^* = F^\dag = \{a \in F: a \neq 0\}$ is a group. In particular, if $p$ is a prime number, then $\Z_p^* = \{1, \dots, p - 1\}$ is a group.
+        \item The set of $m \times n$ matrices with entries in $F$, $M_{mn}(F)$ is a group under addition. When $n=1$, $M_{m1}(F) = F^m$.
+        \item The set of invertible $m \times n$ matrices with entries in $F$, $GL(n,F) = \{A \in M_{mn}(F): \mathrm{det}(A) \neq 0\}$ together with matrix multiplication is called (rank $n$) \textbf{general linear group} (over $F$). The identity matrix $I \in GL(n, F)$ is the identity. $\mathrm{det}(A) \neq 0 \implies \exists A\inv \in GL(n,F)$ such that $A A\inv = A\inv A = I$.
+    \end{enumerate}
+\end{example}
+
+\begin{example}[the symmetries of the equilateral triangle]
+    Let $\sigma = \text{flip through the vertical axis}$. Let $\rho = \text{rotation by } \frac{2\pi}{3}$. \\
+    We can compose two symmetries, e.g., $\sigma\rho = \sigma \cdot \rho$. \\
+    We can show that the symmetries given by $\sigma$ and $\rho$ under composition are $\{e, \rho, \rho^2, \sigma, \sigma\rho, \sigma\rho^2\}$ where $e = \text{doing nothing}$. \\
+    We call this set $D_3$. It forms a group under composition. Clearly $\rho^3 = \rho\rho\rho = e$, $\sigma^2 = \sigma\sigma = e$, and $\sigma\rho\sigma = \rho^2 = \rho\inv$.
+\end{example}
+
+\begin{definition}[a dihedral group]
+    The \textbf{dihedral group} of order $2n$ is defined by $$D_n = \{e, \rho, \dots, \rho^{n-1}, \sigma, \sigma\rho, \dots, \sigma\rho^{n - 1}\}$$ where $p^n = e$, $\sigma^2 = e$, and $\sigma\rho\sigma = \rho\inv$.
+    This is a group with the multiplication given by $\sigma\rho\sigma = \rho\inv$.
+\end{definition}
+
+\begin{remark}
+    $D_n$ is the group of symmetries of a regular n-gon.
+\end{remark}
