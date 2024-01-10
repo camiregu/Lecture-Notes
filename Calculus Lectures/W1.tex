@@ -2,3 +2,51 @@
 \chapter{Classifying Critical Points}
 
 %----------------------------------------------------------------------------------------
+
+\begin{theorem}[2nd Derivative Test]
+    Let $f \in C^2(\Omega)$ and let $a \in \Omega (\Omega \subseteq \R^n)$ be a critical point of $f$.
+    \begin{enumerate}
+        \item If $H_f(a)$ is positive definite then $f$ has a local minimum at $a$.
+        \item If $H_f(a)$ is negative definite then $f$ has a local maxiumum at $a$.
+        \item If $H_f(a)$ is indefinite then $f$ has a saddle point at $a$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{recall}
+    Any symmetric $n \times n$ matrix A can be diagonalized, i.e., $\exists$ an orthonormal basis $u_1, u_2, \dots, u_n$ in $\R^n$ and real numbers $\lambda_1, \lambda_2, \dots, \lambda_n$ such that $A u_i = \lambda_i u_i \forall i = 1, 2, \dots, n$.
+\end{recall}
+
+\begin{proposition}
+    Let $Q$ be the quadratic form associated with an $n \times n$ symmetric matrix $A$. Then:
+    \begin{enumerate}
+        \item $Q$ is positive $\iff$ all the eigenvalues of $A$ are positive,
+        \item $Q$ is negative $\iff$ all the eigenvalues of $A$ are negative,
+        \item $Q$ is indefinite $\iff$ $A$ has both positive and negative eigenvalues.
+    \end{enumerate}
+\end{proposition}
+
+\begin{corollary}
+    Let $a$ be a critical point of a $C^2$ function $f: \Omega \to \R$. If $\mathrm{det} H_f(a) \neq 0$, then $f$ has either a local minimum or a local mximum or a saddle point at $a$.
+\end{corollary}
+
+\begin{definition}[degenerate critical points]
+    A critical point $a$ of a $C^2$ function $f$ is called non-degenerate if $\mathrm{det} H_f(a) \neq 0$ and degenerate otherwise.
+\end{definition}
+
+\begin{example}[a degenerate critical point]
+    When $f(x,y) = x^3$ then $(0,0)$ is a degenerate critical point of $f$, and $f$ has neither a local extremum at $(0,0)$ nor a saddle point.
+\end{example}
+
+\begin{definition}[the principal minors of a matrix]
+    Let $A = (a_{ij})^n_{i,j=1}$ be an $n \times n$ matrix. Given $k = 1, 2, \dots, n$, we will denote by $A_k$ the $k \times k$ submatrix $A_k = (a_{ij})^k_{i,j=1}$. \\
+    The determinants $\mathrm{det} A_k$ are called the \textbf{principal minors of A}.
+\end{definition}
+
+\begin{proposition}
+    Let $A$ be a symmetric $n \times n$ matrix with $\mathrm{det}A \neq 0$. Then:
+    \begin{enumerate}
+        \item $A$ is positive definite $\iff$ $\mathrm{det} A_k > 0 \forall k = 1, 2, \dots, n$.
+        \item $A$ is negative definite $\iff$ $(-1)^k \mathrm{det} A_k > 0 \forall k = 1, 2, \dots, n$.
+        \item $A$ is indefinite $\iff$ $A$ is neither positive definite nor negative definite.
+    \end{enumerate}
+\end{proposition}

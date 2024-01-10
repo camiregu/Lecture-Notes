@@ -35,7 +35,7 @@
 % amsthm
 \newtheoremstyle{theorem}% Name
 {}{}% Space above and below
-{\itshape}{}% Body font and indent
+{\normalfont}{}% Body font and indent
 {\bfseries}{}% Title font and punctuation
 {\newline}% Space after title
 {\thmname{#1}\thmnumber{ #2}\thmnote{ #3}}% Title customization
@@ -45,18 +45,27 @@
     enhanced jigsaw,
     %interior hidden,
     colframe=white,
-    colback=magenta!5!white,
+    colback=violet!5!white,
     unbreakable,
     before skip=10pt,
     after skip=10pt
 }
+
+%% Define proposition style
+% amsthm
+\newtheoremstyle{proposition}% Name
+{}{}% Space above and below
+{\normalfont}{}% Body font and indent
+{\bfseries}{}% Title font and punctuation
+{\newline}% Space after title
+{\thmname{#1}\thmnumber{ #2}\thmnote{ #3}}% Title customization
 % tcolorbox
 \tcolorboxenvironment{proposition}{
     %blanker,
     enhanced jigsaw,
     %interior hidden,
     colframe=white,
-    colback=magenta!5!white,
+    colback=orange!5!white,
     unbreakable,
     before skip=10pt,
     after skip=10pt
@@ -67,7 +76,7 @@
     enhanced jigsaw,
     %interior hidden,
     colframe=white,
-    colback=magenta!5!white,
+    colback=orange!5!white,
     unbreakable,
     before skip=10pt,
     after skip=10pt
@@ -123,9 +132,11 @@
 }
 
 %%% Environments
-% Define theorem, proposition, and corollary
+% Define theorem
 \theoremstyle{theorem}
 \newtheorem{theorem}{Theorem}[chapter]
+% Define proposition and corollary
+\theoremstyle{proposition}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
 % Define definition
