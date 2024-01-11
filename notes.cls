@@ -116,7 +116,7 @@
 {\normalfont}{}% Body font and indent
 {\itshape}{:}% Title font and punctuation
 { }% Space after title
-{}
+{\thmname{#1}\thmnote{ #3}}
 
 %% Define proof style
 % tcolorboxenvironment
@@ -154,5 +154,8 @@
 %%% Shortcuts
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\inv}{^{-1}}
 \newcommand{\spacebeforelist}{.\vspace{-4mm}}
+\newcommand{\Lapl}{L}
+\newcommand{\eval}{|}
