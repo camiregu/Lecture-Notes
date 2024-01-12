@@ -14,8 +14,8 @@
 \end{example}
 
 \begin{definition}[the Laplace Transform]
-    For a function $f(t)$, $$\Lapl\left\{f(t)\right\} = \int_0^\infty f(t) e^{-st} dt, s>0$$
-    where $\Lapl\{f(t)\}$ is a function of $s$.
+    For a function $f(t)$, $$\Lapl\set{f(t)} = \int_0^\infty f(t) e^{-st} dt, s>0$$
+    where $\Lapl\set{f(t)}$ is a function of $s$.
 \end{definition}
 
 \begin{remark}
@@ -24,7 +24,7 @@
 
 \begin{theorem}[Linearity of the Laplace transform]
     For $a,b$ constants, and $f, g$ functions, The Laplace transform satisfies
-    $$\Lapl\{af(t) + bg(t)\} = a\Lapl\{f(t)\} + b\Lapl\{g(t)\}$$
+    $$\Lapl\set{af(t) + bg(t)} = a\Lapl\set{f(t)} + b\Lapl\set{g(t)}$$
 \end{theorem}
 
 \begin{definition}[the kernel]
@@ -32,29 +32,29 @@
 \end{definition}
 
 \begin{definition}[the domain]
-    The \textbf{domain} of $F(s) = \Lapl\{f(t)\}$ is the set of values of $s$ such that $F(s)$ converges.
+    The \textbf{domain} of $F(s) = \Lapl\set{f(t)}$ is the set of values of $s$ such that $F(s)$ converges.
 \end{definition}
 
-\begin{example}[computing $\Lapl\{t\}$]
+\begin{example}[computing $\Lapl\set{t}$]
     \begin{recall}[integration by parts]
         $\int udv = uv - \int vdu$
     \end{recall}
 
     \begin{align*}
-        \Lapl\{t\} &= \int_0^\infty t e^{-st} dt \\
-        &= \lim_{\beta \to \infty} \int_{0}^{\beta} te^{-st} dt \\
-        &= \lim_{\beta \to \infty} t\left(-\frac{1}{s}\right) e^{st} \eval_0^\beta - \int_0^\beta \left(-\frac{1}{s} e^{-st} dt\right) \\
-        &= \lim_{\beta \to \infty} -\frac{\beta}{s}e^{s\beta} + \frac{1}{s} \int_0^\beta e^{-st} dt \\
-        &= \lim_{\beta \to \infty} -\frac{\beta}{s} e^{-s\beta} + \frac{1}{s} \left[-\frac{1}{s} e^{-st}\right]_0^\beta \\
-        &= \lim_{\beta \to \infty} -\frac{\beta}{s} e^{-s\beta} + \frac{1}{s^2}\left[1 - e^{s\beta}\right] \\
+        \Lapl\set{t} &= \int_0^\infty t e^{-st} dt \\
+        &= \lim_{\beta \to \infty} \left( \int_{0}^{\beta} te^{-st} dt \right) \\
+        &= \lim_{\beta \to \infty} \left( \eval{t\left(-\frac{1}{s}\right) e^{st}}_0^\beta - \int_0^\beta \left(-\frac{1}{s} e^{-st} dt\right) \right) \\
+        &= \lim_{\beta \to \infty} \left( -\frac{\beta}{s}e^{s\beta} + \frac{1}{s} \int_0^\beta e^{-st} dt \right) \\
+        &= \lim_{\beta \to \infty} \left( -\frac{\beta}{s} e^{-s\beta} + \frac{1}{s} \left[-\frac{1}{s} e^{-st}\right]_0^\beta \right) \\
+        &= \lim_{\beta \to \infty} \left( -\frac{\beta}{s} e^{-s\beta} + \frac{1}{s^2}\left[1 - e^{s\beta}\right] \right) \\
         &= \frac{1}{s^2}
     \end{align*}
     Wow, that computation sucked! Luckily, we will be given formula sheets to speed up these calculations. This is because the objective of this class is to solve ODEs using Laplace as a tool, not to practice computing integration by parts.
 \end{example}
 
 \begin{theorem}[Laplace transformations of power functions]
-    We have, in general, $\Lapl\{t^p\} = \int_0^\infty t^p e^{-st} dt = \frac{1}{s^{p+1}} \int_0^\infty x^p e^-x dx$ where $x = st$. 
-    So $$\Lapl\{t^p\} = \frac{1}{s^{p+1}} \Gamma (p+1)$$ 
+    We have, in general, $\Lapl\set{t^p} = \int_0^\infty t^p e^{-st} dt = \frac{1}{s^{p+1}} \int_0^\infty x^p e^-x dx$ where $x = st$. 
+    So $$\Lapl\set{t^p} = \frac{1}{s^{p+1}} \Gamma (p+1)$$ 
 \end{theorem}
 
 \begin{theorem}[Properties of the Gamma function]

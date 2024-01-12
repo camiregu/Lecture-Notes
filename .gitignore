@@ -4,15 +4,21 @@ algebra.fdb_latexmk
 algebra.fls
 algebra.log
 algebra.synctex.gz
+algebra.out
+algebra.toc
 Calculus Lectures/W1.aux
 calculus.aux
 calculus.fdb_latexmk
 calculus.fls
 calculus.log
 calculus.synctex.gz
+calculus.out
+calculus.toc
 Methods Lectures/W1.aux
 methods.aux
 methods.fdb_latexmk
 methods.fls
 methods.log
 methods.synctex.gz
+methods.out
+methods.toc

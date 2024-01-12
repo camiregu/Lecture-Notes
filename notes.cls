@@ -8,10 +8,10 @@
 %%% Class options
 % Inherit options of book
 \DeclareOption*{
-    \PassOptionsToClass{\CurrentOption}{book}
+    \PassOptionsToClass{\CurrentOption}[openany, notitlepage]{book}
 }
 \ProcessOptions\relax
-\LoadClass{book}
+\LoadClass[openany, notitlepage]{book}
 
 
 %%% 3rd party packages
@@ -22,13 +22,20 @@
 % for enumerated lists
 \RequirePackage{enumitem}
 % for better referencing (consider hyperref and varref)
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{varioref}
 \RequirePackage{cleveref}
 % for pretty colors
 \RequirePackage{tcolorbox}
 \tcbuselibrary{most}
 
-%%% Change "Chapter" to "Week"
+%%% Little formatting notes
 \renewcommand{\chaptername}{Week}
+\newcommand{\toccontents}{\@starttoc{toc}}
+\newcommand{\frontpagewarning}{\vspace{10mm}
+\begin{note}
+    Theorem numbers come from the order they are presented in lecture, and do not correspond to any textbook or written course material.
+\end{note}}
 
 %%% Environment Styles
 %% Define theorem style
@@ -41,12 +48,11 @@
 {\thmname{#1}\thmnumber{ #2}\thmnote{ #3}}% Title customization
 % tcolorbox
 \tcolorboxenvironment{theorem}{
-    %blanker,
-    enhanced jigsaw,
-    %interior hidden,
-    colframe=white,
-    colback=violet!5!white,
     unbreakable,
+    enhanced jigsaw,
+    colback=violet,
+    opacityback = 0.05,
+    opacityframe = 0,
     before skip=10pt,
     after skip=10pt
 }
@@ -61,23 +67,21 @@
 {\thmname{#1}\thmnumber{ #2}\thmnote{ #3}}% Title customization
 % tcolorbox
 \tcolorboxenvironment{proposition}{
-    %blanker,
-    enhanced jigsaw,
-    %interior hidden,
-    colframe=white,
-    colback=orange!5!white,
     unbreakable,
+    enhanced jigsaw,
+    colback=orange,
+    opacityback = 0.05,
+    opacityframe = 0,
     before skip=10pt,
     after skip=10pt
 }
 % tcolorbox
 \tcolorboxenvironment{corollary}{
-    blanker,
-    enhanced jigsaw,
-    %interior hidden,
-    colframe=white,
-    colback=orange!5!white,
     unbreakable,
+    enhanced jigsaw,
+    colback=orange,
+    opacityback = 0.05,
+    opacityframe = 0,
     before skip=10pt,
     after skip=10pt
 }
@@ -92,12 +96,11 @@
 {\thmname{#1 }\normalfont of\thmnote{ #3}}% Title customization
 % tcolorbox
 \tcolorboxenvironment{definition}{
-    %blanker,
-    enhanced jigsaw,
-    %interior hidden,
-    colframe=white,
-    colback=cyan!5!white,
     unbreakable,
+    enhanced jigsaw,
+    colback=cyan,
+    opacityback = 0.05,
+    opacityframe = 0,
     before skip=10pt,
     after skip=10pt
 }
@@ -121,20 +124,48 @@
 %% Define proof style
 % tcolorboxenvironment
 \tcolorboxenvironment{proof}{
-    blanker,
     enhanced jigsaw,
-    colback=gray!10!white,
-    unbreakable,
-    left=5mm,
+    opacityframe = 0,
+    opacityback = 0.03,
+    colback=black,
+    leftrule=5mm,
     before skip=10pt,
     after skip=10pt,
-    borderline west={1mm}{0pt}{gray}
 }
+
+%% Define question style
+\tcolorboxenvironment{question}{
+    unbreakable,
+    enhanced jigsaw,
+    opacityframe = 0,
+    opacityback = 0.05,
+    colback=red,
+    leftrule=5mm,
+    before skip=10pt,
+    after skip=10pt,
+    borderline west={1mm}{0pt}{red!75!black},
+}
+
+%% Define answer style
+\tcolorboxenvironment{answer}{
+    unbreakable,
+    enhanced jigsaw,
+    opacityframe = 0,
+    opacityback = 0.05,
+    colback=green,
+    leftrule=5mm,
+    before skip=10pt,
+    after skip=10pt,
+    borderline west={1mm}{0pt}{green!75!black},
+}
+
 
 %%% Environments
 % Define theorem
 \theoremstyle{theorem}
 \newtheorem{theorem}{Theorem}[chapter]
+\newtheorem*{question}{Question}
+\newtheorem*{answer}{Answer}
 % Define proposition and corollary
 \theoremstyle{proposition}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -152,10 +183,19 @@
 \newtheorem*{recall}{Recall}
 
 %%% Shortcuts
+% Common Sets
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+% Math Symbols
 \newcommand{\inv}{^{-1}}
+\newcommand{\grad}{\nabla}
+\DeclareMathOperator{\Lapl}{\mathcal{L}}
+\newcommand{\eval}[1]{\left.#1\right|}
+\newcommand{\restr}{\vert}
+\newcommand{\divides}{\mid}
+\newcommand{\ord}[1]{\left|#1\right|}
+\newcommand{\set}[1]{\left\{#1\right\}}
+% Formatting
 \newcommand{\spacebeforelist}{.\vspace{-4mm}}
-\newcommand{\Lapl}{L}
-\newcommand{\eval}{|}
