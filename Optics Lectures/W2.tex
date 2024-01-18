@@ -1,0 +1,89 @@
+% camiregu 2024-jan-09
+\chapter{Imaging by Reflection and Refraction}
+
+%----------------------------------------------------------------------------------------
+
+\section{Imaging by an Optical System}
+%todo define image point
+
+\begin{definition}[an optical system]
+    An \textbf{optical system} is a combination of reflecting and refracting surfaces (such as lenses and mirrors) that may alter the propagation direction of light. \\
+    Rays enter the optical system from an \textbf{object point}, then exit, and converge to an \textbf{image point}.
+\end{definition}
+
+\begin{proposition}
+    Every ray from an object point to an image point has the same transit time.
+\end{proposition}
+
+\begin{theorem}[Principle of Reversibility]
+    Consider an arbitrary object at $O$ with its image at $I$. If we placed an object at $I$, the path of the rays would be exactly reversed, and that object would have an image at $I$.
+\end{theorem}
+
+\subsection{Optical Axis and Paraxial Rays}
+
+\begin{definition}[an optical axis]
+    The \textbf{optical axis} defines the path along which light propagates, on average. \\
+    A system of simple lenses and mirrors is one in which the optical axis passes through all of their centres of curvature. \\
+    A \textbf{paraxial ray} is a ray at a small enough angle near the optical axis that the small angle approximation is appropriate.
+\end{definition}
+
+\section{Reflections at Spherical Surfaces}
+
+% diagram
+
+\begin{definition}[the curvature of a mirror]
+    For spherical mirrors in a system of simple mirrors, we have:
+    \begin{enumerate}
+        \item the \textbf{centre of curvature} is the point equidistant to every point on the surface of the mirror. Positive for mirror facing light, negative for facing away.
+        \item the \textbf{radius of curvature} is that distance between the center and the surface of the mirror. Positive for convex mirrors, negative for concave mirrors.
+        \item the \textbf{vertex} of the mirror is where the mirror intersects with the optical axis.
+    \end{enumerate}
+\end{definition}
+
+% other diagram
+
+\begin{theorem}
+    For convex or concave mirrors under the paraxial approximation, we have $$\frac{1}{s} + \frac{1}{s'} = -\frac{2}{R}$$
+\end{theorem}
+\begin{proof}
+    This proof is valid for convex mirrors only, but the rest is similar.
+    Note from the geometry that $\theta = \alpha + \phi$, and $2\theta = \alpha + \alpha' \implies \alpha - \alpha' = -2\phi$. \\
+    Applying the small angle approximation (for paraxial rays), we find $\frac{h}{s} - \frac{h}{s'} = -2\frac{h}{R} \implies \frac{1}{s} - \frac{1}{s'} = -2\frac{2}{R}$.
+\end{proof}
+
+\subsection{Objects at Infinity}
+
+\begin{definition}[the focal length]
+    Consider an object on the optical axis, infinitely far from the mirror. All the rays of light in this case would be parallel to the optical axis, and the reflected rays' projections would intersect exactly at $s' = -\frac{R}{2}$. \\
+    We call this point the \textbf{focal point},
+    \begin{align*}
+        f &= -\frac{R}{2} \\
+        \frac{1}{f} &= \frac{1}{s} + \frac{1}{s'} \\
+    \end{align*}
+\end{definition}
+
+\begin{note}
+    The focal point of a convex mirror will always be negative, and for a concave mirror will always be positive.
+\end{note}
+
+\subsection{Lateral Magnification}
+
+\begin{definition}[the magnification factor]
+    The ratio of the image height to the object height, multiplied by its inversion along the y-axis, is $$m = \frac{h_i}{h_o} = -\frac{s'}{s}$$ where $h_i$ is negative for inverted images.
+\end{definition}
+
+\begin{remark}
+    Optics using the paraxial approximation are referred to as \textbf{Gaussian} or \textbf{first-order} optics.
+\end{remark}
+
+\section{Refraction by Spherical Surfaces}
+
+% diagram
+
+\begin{theorem}
+    When light is refracted through a spherical surface, going from an $n_1$-medium to an $n_2$-medium, we have $$\frac{n_1}{s} + \frac{n_2}{s} = \frac{n_2 - n_1}{R}$$ where $s, s'$ are distances between the vertex and object, and vertex and image, respectively. The magnification ratio is $$m = \frac{n_1s'}{n_2s}$$
+\end{theorem}
+\begin{proof}
+    By Snell's Law, we see $\theta_2 = \sin\inv\of{\frac{n_1}{n_2}\sin\theta_1}$.
+    If $n_2 > n_1: \theta_2 < \theta_1$, then applying the paraxial approximating, we find $\frac{n_1}{s} + \frac{n_2}{s'} = \frac{n_2 - n_1}{R}$, with magnification factor $m = \frac{h_i}{h_o} = -\frac{n_1s'}{n_2s}$.
+\end{proof}

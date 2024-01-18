@@ -52,9 +52,14 @@
     Wow, that computation sucked! Luckily, we will be given formula sheets to speed up these calculations. This is because the objective of this class is to solve ODEs using Laplace as a tool, not to practice computing integration by parts.
 \end{example}
 
+\begin{recall}
+    $\Gamma (n) = (n-1)!$
+\end{recall}
+
 \begin{theorem}[Laplace transformations of power functions]
     We have, in general, $\Lapl\set{t^p} = \int_0^\infty t^p e^{-st} dt = \frac{1}{s^{p+1}} \int_0^\infty x^p e^-x dx$ where $x = st$. 
     So $$\Lapl\set{t^p} = \frac{1}{s^{p+1}} \Gamma (p+1)$$ 
+    When $p = n \in \N$, we have $$\Lapl\set{t^n} = \frac{n!}{s^{n+1}}$$
 \end{theorem}
 
 \begin{theorem}[Properties of the Gamma function]
@@ -66,3 +71,20 @@
         \item When $p < 0$ and $p \notin \Z$, use successive applications of the Recurrence Relation $\Gamma(p) = \frac{1}{p} \Gamma (p + 1)$
     \end{enumerate}
 \end{theorem}
+
+\begin{remark}
+    From the definition we can find $\Gamma (\frac{1}{2}) = \sqrt{\pi}$
+\end{remark}
+
+\begin{example}[$\Gamma\of{\frac{3}{2}}$]
+    \begin{align*}
+        \Gamma\of{\frac{3}{2}} &= \frac{1}{2} \Gamma\of{\frac{1}{2}} \\
+        &= \frac{1}{2} \sqrt{\pi}
+    \end{align*}    
+\end{example}
+
+\begin{example}[$\Lapl\set{t^{\frac{1}{2}}}$]
+    \begin{align*}
+        \Lapl\set{t^{\frac{1}{2}}} = \Gamma\of{\frac{3}{2}}
+    \end{align*}
+\end{example}

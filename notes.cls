@@ -28,6 +28,10 @@
 % for pretty colors
 \RequirePackage{tcolorbox}
 \tcbuselibrary{most}
+% for units
+\RequirePackage{siunitx}
+% for images and graphs
+\RequirePackage{graphicx}
 
 %%% Little formatting notes
 \renewcommand{\chaptername}{Week}
@@ -77,6 +81,16 @@
 }
 % tcolorbox
 \tcolorboxenvironment{corollary}{
+    unbreakable,
+    enhanced jigsaw,
+    colback=orange,
+    opacityback = 0.05,
+    opacityframe = 0,
+    before skip=10pt,
+    after skip=10pt
+}
+% tcolorbox
+\tcolorboxenvironment{lemma}{
     unbreakable,
     enhanced jigsaw,
     colback=orange,
@@ -170,6 +184,7 @@
 \theoremstyle{proposition}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
 % Define definition
 \theoremstyle{definition}
 \newtheorem*{definition}{Definition}
@@ -181,6 +196,9 @@
 \newtheorem*{remark}{Remark} 
 \newtheorem*{note}{Note}
 \newtheorem*{recall}{Recall}
+
+%%% Set Directory
+\newcommand{\directory}[1]{\def\@directory{#1}}
 
 %%% Shortcuts
 % Common Sets
@@ -197,5 +215,18 @@
 \newcommand{\divides}{\mid}
 \newcommand{\ord}[1]{\left|#1\right|}
 \newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\of}[1]{\left(#1\right)}
+\newcommand{\norm}[1]{\lVert#1\rVert}
 % Formatting
 \newcommand{\spacebeforelist}{.\vspace{-4mm}}
+% Images
+\newcommand{\insertimage}[2][1]{
+    \begin{figure}[!htbp]
+    \centering
+    \includegraphics[scale=#1]{\Experiment/Images/#2.png}
+    \end{figure}
+}
+
+%TODO
+% model environment
+% easy images (directory)

@@ -1,4 +1,5 @@
 Algebra Lectures/W1.aux
+Algebra Lectures/W2.aux
 algebra.aux
 algebra.fdb_latexmk
 algebra.fls
@@ -7,6 +8,7 @@ algebra.synctex.gz
 algebra.out
 algebra.toc
 Calculus Lectures/W1.aux
+Calculus Lectures/W2.aux
 calculus.aux
 calculus.fdb_latexmk
 calculus.fls
@@ -22,3 +24,12 @@ methods.log
 methods.synctex.gz
 methods.out
 methods.toc
+Optics Lectures/W1.aux
+Optics Lectures/W2.aux
+optics.aux
+optics.fdb_latexmk
+optics.fls
+optics.log
+optics.synctex.gz
+optics.out
+optics.toc
