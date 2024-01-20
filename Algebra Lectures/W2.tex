@@ -84,10 +84,84 @@
     Subgroup test.
 \end{proof}
 
-\begin{example}
-    \spacebeforelist
+\begin{remark}
     \begin{enumerate}
         \item $C_G(e) = G$
         \item $C_G(b) = G \iff b \in Z(G)$
+        \item $e \in C_G\of{b}$, $<b> \subseteq C_G\of{b}$
     \end{enumerate}
+\end{remark}
+
+\begin{example}[a centralizer]
+    $C_{GL(2, \R)}\of{\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}} = \set{\begin{bmatrix} a & 0 \\ 0 & b \end{bmatrix}: a, b \in \R^\times}$
 \end{example}
+
+\begin{recall}
+    $G$ is cyclic if $G = <a> = \set{a^j: j \in \Z}$ for some $a \in G$.
+\end{recall}
+
+\begin{theorem}
+    Suppose $a \in G$. Then 
+    \begin{enumerate}
+        \item If $\ord{ a } = \infty$, then $a^k = a^j \iff j = k$
+        \item If $\ord{ a } = n$, then $a^k = a^j \iff$ $n$ divides $k - j$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item Suppose $\ord{ a } = \infty$. This means $a^n \neq e$ for any $n \geq 1$. Suppose now $a^k = a^j$ with $k \geq j$. Then $a^ka^{-j} = aja^{-j} = e \implies a^{k-j}$ for $k - j \geq 0$. Since $a^n \neq e \forall n \geq 1$, we have $k - j = 0 \implies k = j$.
+        \item Suppose $\ord{ a } = n$. This means $a^n = e$ and $n$ is the least positive number satisfying this equation. Suppose $a^k = a^j$ with $k \geq j$. Then $a^{k-j} = e$ where $k - j \geq 0$. By definition of $n$, $n \leq k - j$. By the division algorithm, $k - j = qn + r$ where $q, r \in \Z$ are unique and $0 \leq r \leq n - 1$. \\
+        $e = a^{k - j} = a^{qn + r} = a^{qn} a^r = \left(a^n\right)^q a^r = e^q a^r = ea^r =a^r$, so $r = 0$ by the minimality of $n$, and so $k - j = qn \implies \frac{k-j}{n} = q \in Z \implies n$ divides $k - j$.\\
+        Conversely if $qn = k - j$, then $a^{k-j} = \left(a^n\right)^q = e^q = e \implies a^k = a^j$.
+    \end{enumerate}
+\end{proof}
+
+\begin{remark}
+    In part 2., $n$ divides $k-j \iff (k-j) \mod n = 0 \iff k \mod n = j \mod n$
+\end{remark}
+
+\begin{corollary}
+    Suppose $\ord{ a } n$. Then $a^k = e$ for some $k \in \Z \iff$ k is a multiple of $\ord{ a }$
+\end{corollary}
+\begin{proof}
+    Suppose $a^k = e$. Then $a^k = a^0$, so $n$ divides $k - 0 = k$.
+\end{proof}
+
+\begin{corollary}
+    Suppose $a \in G$. Then \begin{enumerate}
+        \item If $\ord{a} = n$ then $<a> = \set{e, a^1, a^2, \dots, a^{n-1}}$ and $\ord{<a>} = \ord{a}$.
+        \item If $\ord{a} = \infty$, then $<a>$ is infinite and $\ord{<a>} = \ord{a} = \infty$
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    Didn't take notes for this one.
+\end{proof}
+
+\begin{corollary}
+    Suppose $G$ is a finite group and $a,b \in G$. Then \begin{enumerate}
+        \item $\ord{a}, \ord{b}$ are finite
+        \item If $ab = ba$ then $\ord{ab}$ divides $\ord{a} \ord{b}$
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    \begin{enumerate}
+        \item Suppose by way of contradiction that $\ord{a}$ is infinite. Then $<a> \subseteq G$ is infinite. But $G$ is finite so $\ord{<a>} \leq \ord{G}$ is a contradiction.
+        \item $(ab)^{\ord{a}\ord{b}} = a^{\ord{a}\ord{b}}b^{\ord{a}\ord{b}} = (a^{\ord{a}})^{\ord{b}}(b^{\ord{b}})^{\ord{a}} = e^{\ord{b}}e^{\ord{a}} = e$
+    \end{enumerate}
+\end{proof}
+
+2 examples omitted. Sorry, I'm prepping for my tutorial later! 
+
+\begin{theorem}
+    Suppose $a \in G$ and $\ord{a} = n$. Then for any $k \geq 1$, $<a^k> = <a^{\gcd \of{n,k}}>$ and $\ord{a^k} = \frac{n}{\gcd \of{n, k}}$
+\end{theorem}
+
+\begin{theorem}[Fundamental Theorem of Cyclic Groups]
+    Suppose $G = <a>$ is cyclic and $\ord{G} = n$. Then \begin{enumerate}
+        \item Every subgroup of $H$ is cyclic and $k = \ord{H}$ divides $n = \ord{G}$, i.e., $k$ is a divisor of $n$
+        \item For every divisor $k$ of $n$, there is a unique subgroup of $G$ of order $k$ and it is equal to $<a^{\frac{n}{k}}>$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Suppose $H$ is a subgroup of $G$ and $H \neq <e>$. Let $m \geq 1$ be the least power of $a$ such that $a^m \in H$. Since $H$ is closed under multiplication and inversion, $<a^m> \subseteq H$. Suppose $a^j \in H$. By the division algorithm, $j = qm + r$ with $0 \leq r \leq m$ $\implies a^j = \left(a^m\right)^q a^r \implies a^j \left(a^m\right)^{-q} = a^r$, so since $a^j,\left(a^m\right)^{-q} \in H$, $a^r \in H \implies r = 0$ by the minimality of $m$.
+\end{proof}
