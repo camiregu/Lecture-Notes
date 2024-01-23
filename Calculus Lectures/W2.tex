@@ -168,6 +168,12 @@ How do these results generalize to functions of $n$ variables?
         \frac{\partial F}{\partial x}(x,y) & \frac{\partial F}{\partial x}(x,y)
     \end{bmatrix}$$
     Thus $\det\of{D_G\of{a,b}} = \left(\det I_n\right)\left(\det\of{\frac{\partial F}{\partial y}(a,b)}\right) \neq 0$. \\
-    Thus by the IFT, there exists an open subset $\Omega_1 \subseteq \Omega$ with $(a,b) \in \Omega_1$ and an open subset $\Omega \subseteq \R^{n + m}$ with $(a,c) = G\of{a,b} \in W$ such that $G \restr \Omega_1$ is a $C^k$ diffeomorphism of $\Omega$ onto $W$.
-    (to be continued next lecture)
+    Thus by the IFT, there exists an open subset $\Omega_1 \subseteq \Omega$ with $(a,b) \in \Omega_1$ and an open subset $\Omega \subseteq \R^{n + m}$ with $(a,c) = G\of{a,b} \in W$ such that $G \restr \Omega_1$ is a $C^k$ diffeomorphism of $\Omega_1$ onto $W$.
+    Let $H = \left(G \restr \Omega_1\right)\inv: W \to \Omega_1$. Then $H\of{x,y} = \left(j\of{x,y}, k\of{x,y}\right)$ where $j: W \to \R^n$ and $k: W \to \R^m$ are $C^k$ functions. Note that $(x,y) = G\of{H\of{x,y}} = \left(j\of{x,y}, F\of{k\of{x,y}}\right)$ for all $(x,y) \in W$. Hence, $j\of{x,y} = x$ and $F\of{k\of{x,y}} = y$ for all $(x,y) \in W$. Thus $H\of{x,y} = \left(x, k\of{x,y}\right)$ and so for all $(x,y) \in W$,
+    \[\left(x, k\of{x,y}\right) \in \Omega_1 \text{ and } F\of{x,k\of{x,y}} = y\]
+    Note that we may assume that $\Omega_1 = U' \times V$ where $U' \subseteq \R^n$ and $V \subseteq \R^m$ are open. [Indeed, $(a,b) \in \Omega_1$ and $\Omega_1$ is open, so there exists an $r > 0$ such that $B^{n + m}_r\of{a,b} \in \Omega_1$. But $B^{n + m}_r\of{a,b} \supseteq B^{n}_{\frac{r}{2}}\of{a} \times B^{m}_{\frac{r}{2}}\of{b}$. So we can take $U' = B^{n}_\frac{r}{2}\of{a}$, $V = B^m_\frac{r}{2}\of{b}$ and replace $\Omega_1$ with $U' \times V$ and $W$ with $G\of{U' \times V}$].
+
+    Moreover, since $(a,c) \in W$, we can find an open set $U$ such that $a \in U \subseteq U'$ and $U \times \set{c} \subseteq W$. Then for all $x \in U$, $(x,c) \in W$ and so $F\of{x, k\of{x,c}} = c$. Thus when $f: U \to V$ is given by $f\of{x} = k\of{x,c}$, then $f$ is an implicit funciton defined by the equation $F(x,y) = c$ (for $x \in U$, $y \in V$). It is clear that $f$ is a $C^k$ function.
+
+    It remains to confirm that for all $x \in U$ there exists a unique $y \in V$ such that $F\of{x,y} = c$. But if $y_1, y_2 \in V$ and $F\of{x,y_1} = c = f\of{x,y_2}$, then $G\of{x,y_1} = (x,c) = G\of{x,y_2}$, and so $y_1 = y_2$ as $G \restr U \times V$ is injective.
 \end{proof}

@@ -1,0 +1,88 @@
+% camiregu 2024-jan-23
+\chapter{Permutation Groups (Symmetric Groups)}
+
+%----------------------------------------------------------------------------------------
+
+\begin{definition}[the Euler $\phi$-function]
+    The Euler $\phi$-function is defined for every positive integer $d \geq 1$ by
+    \[\phi\of{d} = \left\{ \begin{matrix} 1 \text{ if } d = 1 \\ \end{matrix} \right.\]
+\end{definition}
+
+\begin{definition}
+    Suppose $A \neq \phi$ is a set. A \textbf{permutation} of $A$ is a bijection $\beta: A \to A$ (1-1, onto). The \textbf{permutation group} (\textbf{symmetric group}) of $A$ is the set of permutations of $A$ under composition.
+\end{definition}
+
+\begin{recall}[some facts about functions]
+    Let $S_A$ be the symmetric group of $A \neq \phi$.
+
+    If $\alpha, \beta \in S_A$ then $\alpha \circ \beta \of{a} = \alpha\of{\beta\of{a}}$ for all $a \in A$.
+
+    From MATH1800 composition of 1-1 and onto functions is again 1-1 and onto, i.e., $\alpha \circ \beta \in S_A$.
+
+    From MATH1800 $(\alpha \circ \beta) \circ \gamma = \alpha \circ (\beta \circ \gamma)$ for all $\alpha, \beta, \gamma \in S_A$.
+    $\alpha$ permutation $\iff$ $\alpha$ is invertible under composition.s
+\end{recall}
+
+\begin{remark}
+    Define $e \in S_A$ by $e\of{a} = a$ for all $a \in A$. Clearly $e \circ \alpha \of{a} = e\of{\alpha\of{a}} = \alpha\of{a}$ for all $a \in A \implies e \circ a = a$.
+    We see that $S_A$ truly is a group.
+\end{remark}
+
+\begin{example}
+    Take $A = \set{1,2,3}$.
+    What are the permutations in $S_3 = S_A$?
+    \begin{itemize}
+        \item $e \in S_3: e\of{1} = 1, e\of{2} = 2, e\of{3} = 3$.
+        \item $\beta \in S_3$ where $\beta\of{1} = 2, \beta\of{2} = 3, \beta\of{3} = 1$.
+    \end{itemize}
+    Let's rewrite $\beta$ as follows: $\begin{bmatrix} 1 & 2 & 3 \\ 2 & 3 & 1 \end{bmatrix} = \R$.
+
+    In general for any $\alpha \in S_3$, we may rewrite it as $\begin{bmatrix} 1 & 2 & 3 \\ \alpha\of{1} & \alpha\of{2} & \alpha\of{3} \end{bmatrix} = \R$.
+
+    The number of permutations is given by the number of choices. This is $3! = 3 \cdot 2 \cdot 1$. We just proved that $\ord{S_3} = 3! = 6$.
+    
+    Similar reasoning tells us that $\ord{S_n} = n!$ for every $n \geq 1$.
+\end{example}
+
+\begin{question}
+    Paul Mezo said we "know everything" about linear algebra. What does that mean?
+\end{question}
+\begin{answer}
+    There are no unsolved problems in finite linear algebra.
+\end{answer}
+
+\section{Cycle Notation}
+
+Consider $S_3$ and $\begin{bmatrix} 1 & 2 & 3 \\ 2 & 3 & 1 \end{bmatrix} \in S_3$. We rewrite this permutation as follows: $(1 2 3)$.
+
+Notice that $\alpha = (123) \neq (132) = \beta$, but they are both 3-cycles.
+
+Also, $\gamma = (12)$ is the permutation such that $\gamma\of{1} = 2, \gamma\of{2} = 1, \gamma\of{3} = 3$. It's a 2-cycle.
+
+We omit 1-cycles.
+
+The six permutations in $S_3$ in cycle notation are $e, (12), (13), (23), (123), (132)$.
+
+\begin{example}[cycles of $S_4$]
+    Consider $S_4$. $\ord{S_4} = 24 = 4!$.
+    \begin{itemize}
+        \item $e$,
+        \item $(12), (13), (14), (23), (24), (34)$
+        \item $(123), (134), \dots$
+        \item $(1234), (1243), \dots$
+        \item $(12)(34), (13)(24), (14)(23)$
+    \end{itemize}
+\end{example}
+
+\begin{definition}[disjoint cycles]
+    Two cycles $(a_1, a_2, \dots, a_m), (b_1, b_2, \dots, b_k) \in S_n$ are \textbf{disjoint} if $a_j \neq b_l$ for any $j, l$. Their product can be written equally in either order.
+\end{definition}
+
+Composition of permutations is interpreted as products of cycles as follows:
+
+\begin{example}[compositions in $S_7$]
+    \begin{itemize}
+        \item $(623)(12) = (1362)$
+        \item $(12)(347)(23) = (24731)$
+    \end{itemize}
+\end{example}

@@ -163,5 +163,38 @@
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    Suppose $H$ is a subgroup of $G$ and $H \neq <e>$. Let $m \geq 1$ be the least power of $a$ such that $a^m \in H$. Since $H$ is closed under multiplication and inversion, $<a^m> \subseteq H$. Suppose $a^j \in H$. By the division algorithm, $j = qm + r$ with $0 \leq r \leq m$ $\implies a^j = \left(a^m\right)^q a^r \implies a^j \left(a^m\right)^{-q} = a^r$, so since $a^j,\left(a^m\right)^{-q} \in H$, $a^r \in H \implies r = 0$ by the minimality of $m$.
+    \begin{enumerate}
+        \item Suppose $H$ is a subgroup of $G$ and $H \neq <e>$. Let $m \geq 1$ be the least power of $a$ such that $a^m \in H$. Since $H$ is closed under multiplication and inversion, $<a^m> \subseteq H$. Suppose $a^j \in H$. By the division algorithm, $j = qm + r$ with $0 \leq r \leq m$ $\implies a^j = \left(a^m\right)^q a^r \implies a^j \left(a^m\right)^{-q} = a^r$, so since $a^j,\left(a^m\right)^{-q} \in H$, $a^r \in H \implies r = 0$ by the minimality of $m$.
+        \item Suppose $k$ divides $n$, i.e. $\frac{n}{k}$ is an integer. Recall that $\ord{<a^\frac{n}{k}>} = \ord{a^\frac{n}{k}} = k$. It follows that $\ord{<a^\frac{n}{k}>} = k$.
+        
+        Suppose $H \subseteq <a>$ is a subgroup and $\ord{H} = k$. By part 1, $H = a^m$ for some $m \geq 1$. By Theorem 2.8, $k = \ord{H} = \ord{<a^m>} = \ord{a^m} = \frac{n}{\gcd\of{m,n}} \implies \gcd\of{m,n} = \frac{n}{k}$.
+
+        By Theorem 2.8 again, $H = <a^m> = <a^{\gcd\of{m,n}}> = <a^\frac{n}{k}>$.
+    \end{enumerate}
 \end{proof}
+
+\newpage
+
+\begin{example}[the subgroups of $\Z_{12}$]
+    The divisors of $n = 12$ are $1,2,3,4,6,12$
+    \begin{itemize}
+        \item $k = 1$: $<0>$
+        \item $k = 2$: $<6> = \set{0,6}$
+        \item $k = 3$: $<4> = \set{0,4,8}$
+        \item $k = 4$: $<3> = \set{0,3,6,9}$
+        \item $k = 6$: $<2> = \set{0,2,4,6,8,10}$
+        \item $k = 12$: $\Z_{12} = \set{0,1,2,3,4,5,6,7,8,9,10,11}$
+    \end{itemize}
+    \begin{note}
+        The lattice of subgroups of $\Z_{12}$ illustrates the containment relationships.
+        \insertimage[0.5]
+    \end{note}
+\end{example}
+
+\begin{remark}
+    In $\Z_n$, clearly $<m> \subseteq <k> \iff m \in <k> \iff ka = m \iff k \text{ divides } m$.
+\end{remark}
+
+\begin{example}[subgroups of $\Z_p$]
+    Consider $\Z_p$ where $p$ is prime. The only subgroup of $\Z_p$ is $<0>$.
+\end{example}

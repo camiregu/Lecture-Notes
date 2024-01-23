@@ -198,7 +198,7 @@
 \newtheorem*{recall}{Recall}
 
 %%% Set Directory
-\newcommand{\directory}[1]{\def\@directory{#1}}
+\newcommand{\directory}[1]{\def\Directory{#1}}
 
 %%% Shortcuts
 % Common Sets
@@ -220,11 +220,13 @@
 % Formatting
 \newcommand{\spacebeforelist}{.\vspace{-4mm}}
 % Images
-\newcommand{\insertimage}[2][1]{
-    \begin{figure}[!htbp]
+\newcounter{image}
+\newcommand{\insertimage}[1][1]{
+    \begin{figure}[!h]
     \centering
-    \includegraphics[scale=#1]{\Experiment/Images/#2.png}
+    \includegraphics[scale=#1]{\Directory/\theimage.png}
     \end{figure}
+    \stepcounter{image}
 }
 
 %TODO
