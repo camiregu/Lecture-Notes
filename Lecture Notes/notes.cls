@@ -199,8 +199,23 @@
 \newtheorem*{note}{Note}
 \newtheorem*{recall}{Recall}
 
-%%% Set Directory
-\newcommand{\directory}[1]{\def\Directory{#1}}
+%%% Setup course needs
+\newcommand{\setup}[1]
+{
+\title{\bfseries #1 Notes}
+\author{Camila Restrepo}
+\date{Last updated \today}
+\def\mydirectory{#1}
+}
+
+\newcommand{\makenotes}{
+\foreach \i in {1, 2, ...,20} {%
+    \edef\FileName{W\i}%
+    \IfFileExists{\mydirectory/\FileName}{%
+       \include{\mydirectory/\FileName}%
+    }
+}
+}
 
 %%% Shortcuts
 % Common Sets
@@ -242,7 +257,7 @@
     \begin{figure}[!h]
     \centering
     \stepcounter{image}
-    \includegraphics[scale=#1]{\Directory/\theimage.png}
+    \includegraphics[scale=#1]{\mydirectory/\theimage.png}
     \end{figure}
 }
 

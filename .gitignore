@@ -1,37 +1,7 @@
-Algebra Lectures/W1.aux
-Algebra Lectures/W2.aux
-Algebra Lectures/W3.aux
-algebra.aux
-algebra.fdb_latexmk
-algebra.fls
-algebra.log
-algebra.synctex.gz
-algebra.out
-algebra.toc
-Calculus Lectures/W1.aux
-Calculus Lectures/W2.aux
-Calculus Lectures/W3.aux
-calculus.aux
-calculus.fdb_latexmk
-calculus.fls
-calculus.log
-calculus.synctex.gz
-calculus.out
-calculus.toc
-Methods Lectures/W1.aux
-methods.aux
-methods.fdb_latexmk
-methods.fls
-methods.log
-methods.synctex.gz
-methods.out
-methods.toc
-Optics Lectures/W1.aux
-Optics Lectures/W2.aux
-optics.aux
-optics.fdb_latexmk
-optics.fls
-optics.log
-optics.synctex.gz
-optics.out
-optics.toc
+**.aux
+**.fdb_latexmk
+**.fls
+**.log
+**.synctex.gz
+**.out
+**.toc

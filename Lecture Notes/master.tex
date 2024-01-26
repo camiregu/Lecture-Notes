@@ -2,10 +2,20 @@
 %% Packages and document config
 \documentclass{notes}
 %----------------------------------------------------------------------------------------
-%%% Cover
-\title{\bfseries Multivariable Calculus Winter Notes}
-\author{Camila Restrepo}
-\date{Last updated \today}
+%%% Select course
+\setup{Algebra (Winter)}
+% \setup{Calculus (Winter)}
+% \setup{Mathematical Methods}
+% \setup{Optics}
+
+%----------------------------------------------------------------------------------------
+%%% Filter
+
+% \includeonly{
+%     \mydirectory/W1
+%     \mydirectory/W2
+%     \mydirectory/W3
+% }
 
 %----------------------------------------------------------------------------------------
 %%% Content
@@ -14,8 +24,6 @@
 \toccontents
 \frontpagewarning
 
-\include{Calculus Lectures/W1}
-\include{Calculus Lectures/W2}
-\include{Calculus Lectures/W3}
+\makenotes
 
 \end{document}
