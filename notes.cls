@@ -15,6 +15,8 @@
 
 
 %%% 3rd party packages
+% for cooler commands
+\RequirePackage{xparse}
 % AMS Packages for environments, shortcuts, and fonts
 \RequirePackage{amsthm}
 \RequirePackage{amsmath}
@@ -217,6 +219,21 @@
 \newcommand{\set}[1]{\left\{#1\right\}}
 \newcommand{\of}[1]{\left(#1\right)}
 \newcommand{\norm}[1]{\lVert#1\rVert}
+\DeclareMathOperator{\lcm}{lcm}
+% Cycle command taken from StackExchange, still don't understand
+\ExplSyntaxOn
+\NewDocumentCommand{\cyc}{ O{\;} m }
+ {
+  (\alec_cycle:nn { #1 } { #2 })
+ }
+
+\seq_new:N \l_alec_cycle_seq
+\cs_new_protected:Npn \alec_cycle:nn #1 #2
+ {
+  \seq_set_split:Nnn \l_alec_cycle_seq { , } { #2 }
+  \seq_use:Nn \l_alec_cycle_seq { #1 }
+ }
+\ExplSyntaxOff
 % Formatting
 \newcommand{\spacebeforelist}{.\vspace{-4mm}}
 % Images
@@ -224,9 +241,9 @@
 \newcommand{\insertimage}[1][1]{
     \begin{figure}[!h]
     \centering
+    \stepcounter{image}
     \includegraphics[scale=#1]{\Directory/\theimage.png}
     \end{figure}
-    \stepcounter{image}
 }
 
 %TODO
