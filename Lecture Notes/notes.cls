@@ -35,6 +35,7 @@
 % for images and graphs
 \RequirePackage{graphicx}
 
+
 %%% Little formatting notes
 \renewcommand{\chaptername}{Week}
 \newcommand{\toccontents}{\@starttoc{toc}}
@@ -42,6 +43,7 @@
 \begin{note}
     Theorem numbers come from the order they are presented in lecture, and do not correspond to any textbook or written course material.
 \end{note}}
+
 
 %%% Environment Styles
 %% Define theorem style
@@ -199,6 +201,7 @@
 \newtheorem*{note}{Note}
 \newtheorem*{recall}{Recall}
 
+
 %%% Setup course needs
 \newcommand{\setup}[1]
 {
@@ -216,6 +219,7 @@
     }
 }
 }
+
 
 %%% Shortcuts
 % Common Sets
@@ -235,6 +239,7 @@
 \newcommand{\of}[1]{\left(#1\right)}
 \newcommand{\norm}[1]{\lVert#1\rVert}
 \DeclareMathOperator{\lcm}{lcm}
+\newcommand{\prdr}[2]{\frac{\partial #1}{\partial #2}}
 % Cycle command taken from StackExchange, still don't understand
 \ExplSyntaxOn
 \NewDocumentCommand{\cyc}{ O{\;} m }
@@ -260,7 +265,3 @@
     \includegraphics[scale=#1]{\mydirectory/\theimage.png}
     \end{figure}
 }
-
-%TODO
-% model environment
-% easy images (directory)
