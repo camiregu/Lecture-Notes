@@ -236,6 +236,7 @@
 \newcommand{\divides}{\mid}
 \newcommand{\ord}[1]{\left|#1\right|}
 \newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\cygr}[1]{\langle#1\rangle}
 \newcommand{\of}[1]{\left(#1\right)}
 \newcommand{\norm}[1]{\lVert#1\rVert}
 \DeclareMathOperator{\lcm}{lcm}
