@@ -144,7 +144,7 @@ How do these results generalize to functions of $n$ variables?
 \end{question}
 
 \begin{note}
-    Let $F: \Omega \to \R^m$ be a $C^k$ function where $\Omega \subseteq \R{n + m} = \R^n \times R^m$ is open. We will write the elements of $\R^n + m = R^n \times R^m$ as $(x,y)$ where $x \in R^n$, $y \in R^m$. Then
+    Let $F: \Omega \to \R^m$ be a $C^k$ function where $\Omega \subseteq \R{n + m} = \R^n \times \R^m$ is open. We will write the elements of $\R^n + m = \R^n \times \R^m$ as $(x,y)$ where $x \in \R^n$, $y \in \R^m$. Then
     $$D_f\of{x,y} = \begin{bmatrix}
         \frac{\partial F_1}{\partial x_1}(x,y) & \dots & \frac{\partial F_1}{\partial x_n}(x,y) & \frac{\partial F_1}{\partial y_1}(x,y) & \dots & \frac{\partial F_1}{\partial y_m}(x,y) \\
         \vdots & & \vdots & \vdots & & \vdots \\
@@ -159,7 +159,7 @@ How do these results generalize to functions of $n$ variables?
         \item $(a,b) \in U \times V$,
         \item for all $x \in U$, there exists a unique $y \in V$ such that $F(x,y) = c$.
     \end{enumerate}
-    Moreover, the unique implicit function $f: U \to V$ defined by the equation $F(x,y) = c$ ($x \in U$, $y \in V$) is a $C^k$ funciton.
+    Moreover, the unique implicit function $f: U \to V$ defined by the equation $F\of{x,f\of{x}} = c$ ($x \in U$, $y \in V$) is a $C^k$ function.
 \end{theorem}
 \begin{proof}
     Define $G: \Omega \to \R^{n + m}$ by $G\of{x,y} = (x, F\of{x.y})$. This is a $C^k$ function, $G\of{a,b} = (a, c)$ and

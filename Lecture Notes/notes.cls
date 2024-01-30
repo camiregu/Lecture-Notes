@@ -231,6 +231,8 @@
 \newcommand{\inv}{^{-1}}
 \newcommand{\grad}{\nabla}
 \DeclareMathOperator{\Lapl}{\mathcal{L}}
+\DeclareMathOperator{\diam}{\mathrm{diam}}
+%\newcommand{\cal}[1]{\mathcal{#1}}
 \newcommand{\eval}[1]{\left.#1\right|}
 \newcommand{\restr}{\vert}
 \newcommand{\divides}{\mid}
