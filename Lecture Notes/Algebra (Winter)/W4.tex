@@ -79,3 +79,36 @@
     
     Exercise: $\phi$ is a bijection.
 \end{example}
+
+\begin{note}
+Examples omitted from lecture today; sorry I'm sleepy and need to do tutorial prep.
+\end{note}
+
+\begin{theorem}
+    Suppose $\phi: G \to \bar{G}$ is a group isomorphism. Then \begin{enumerate}
+        \item $\phi\inv: \bar{G} \to G$ is an isomorphism
+        \item $G$ abelian $\iff$ $\bar{G}$ is abelian
+        \item $G$ cyclic $\iff \bar{G}$ is cyclic
+        \item $K$ subgroup of $G \implies \phi\of{K} = \set{\phi\of{k}: k \in K}$ subgroup of $\bar{G}$
+        \item $\bar{K}$ subgroup of $\bar{G} \implies \phi\inv\of{\bar{K}}$ subgroup of $G$. 
+        \item $\phi\of{Z\of{G}} = Z\of{\bar{G}}$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item $\phi\inv: \bar{G} \to G$ exists and is a bijection since $\phi$ is a bijection. Must prove $\phi\inv\of{\bar{a}\bar{b}} = \phi\inv\of{\bar{a}} \phi\inv\of{\bar{b}}$ for $\bar{a},\bar{b}, \in \bar{G}$. Since $\phi$ is a bijection, there exist unique $a,b \in G$ such that $\phi\of{a} = \bar{a}$ and $\phi\of{b} = \bar{b}$. So \[\phi\inv\of{\bar{a}\bar{b}} = \phi\inv\of{\phi\of{a}\phi\of{b}} = \phi\inv\of{\phi\of{ab}} = ab = \phi\inv\of{\bar{a}} = \phi\inv\of{\bar{b}}\]
+        \item Let's prove $G$ abelian $\iff \bar{G}$ abelian. Suppose $G$ is abelian, and $\bar{a},\bar{b} \in \bar{G}$. Let $a,b, \in G$ such that $\phi\of{a} = \bar{a}, \phi\of{b} = \bar{b}$, then \[\bar{a}\bar{b} = \phi\of{a} \phi\of{b} = \phi\of{ab} = \phi\of{ba} = \phi\of{b} \phi\of{a} = \bar{b}\bar{a}.\] This proves $\bar{G}$ is abelian/
+        \item Was done previously
+        \item Suppose $K \subseteq G$ is a subgroup. Suppose $\phi\of{K}, \phi\of{k'} \in \phi\of{K}$ where $k, k' \in K$. Then $\left(\phi\of{k}\right)\inv \phi\of{k'} = \phi\of{k\inv} \phi\of{k'} = \phi\of{k\inv k'}$. Since $k\inv k' \in K$, $\phi\of{k\inv k'} = \left(\phi\of{k}\right)\inv \phi\of{k'} \in \phi\of{K}$
+        \item Follows from 4
+        \item First we prove $\phi\of{Z\of{G}} \subseteq Z\of{\bar{G}}$. Suppose $z \in Z\of{G}$ and $\bar{a} \in \bar{G}$. Let $a \in G$ such that $\phi\of{a} = \bar{a}$. Then $\phi\of{z} \bar{a} = \phi\of{z}\phi{z} = \phi\of{za} = \phi\of{az} = \phi\of{a} \phi\of{z} = \bar{a} \phi\of{z} \implies \phi\of{z} \in Z\of{\bar{G}} \implies \phi\of{Z\of{G}} \subseteq Z\of{\bar{G}}$. By symmetry, $Z\of{\bar{G}} \subseteq \phi\of{Z\of{G}}$ so they are equal.
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}[an automorphism]
+    An \textbf{automorphism} of $G$ is an isomorphism $\phi: G \to G$. The set of automorphisms of $G$ is denoted by $\Aut\of{G}$.
+\end{definition}
+
+\begin{theorem}
+    $\Aut\of{G}$ is a group under composition of functions.
+\end{theorem}

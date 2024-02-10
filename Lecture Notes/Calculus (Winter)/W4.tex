@@ -60,7 +60,7 @@
     When doing the method of Lagrange multipliers, it is important to investigate the points where the gradients are linearly dependent separately.
 \end{remark}
 
-\section{Rectangles and Partitions}
+\section{The integral in $\R^n$}
 
 \begin{remark}
     The regular method for computing the integral in $\R$ is by way of the antiderivative. But there is no analogue to the antiderivative in $\R^n$, so our method for finding the integral will also not be analogous to how it was in $\R$.
@@ -99,3 +99,120 @@
 \begin{lemma}
     If $\cal{P}$ is a partition of a rectangle $R \subseteq \R^n$, then $v\of{R} = \sum_{P \in \cal{P}} v\of{P}$.
 \end{lemma}
+
+\begin{definition}[upper and lower sums]
+    Let $R \subset \R^n$ be a rectangle, $f: \R \to \R$ a bounded function, and $\cal{P}$ be a partition of $R$. Given $P \in \cal{P}$ let 
+    \[m_P= \inf \set{f\of{X}: x \in P}, M_P = \sup \set{f\of{x}: x \in P}.\]
+
+    The \textbf{lower and upper (Darboux or Riemann) sums of $f$ for $\cal{P}$} are the numbers
+
+    \[L_{\cal{P}} \of{f} = \sum_{P \in \cal{P}} m_P v\of{P} \text{ and } U_{\cal{P}} \of{f} = \sum_{p \in \cal{P}} M_P v\of{P},\]
+    respectively. (where $v\of{P}$ is the volume of $P$.)
+\end{definition}
+
+\begin{remark}
+    $v\of{R} \inf \set{f\of{x}: x \in R} \leq L_{\cal{P}}\of{f} \leq U_{\cal{P}}\of{f} \leq \sup \set{f\of{x}: x \in R} v\of{R}$
+\end{remark}
+
+\begin{lemma}
+    If $\cal{Q}$ is a refinement of $\cal{P}$, then
+    \[L_{\cal{P}}\of{f} \leq L_{\cal{Q}}\of{f} \text{ and } U_{\cal{Q}}\of{f} \leq U_{\cal{P}}\of{f}.\]
+\end{lemma}
+
+\begin{proof}
+    Each $P \in \cal{P}$ is the union of the subfamily $\cal{Q}_P \subseteq \cal{Q}$ where $\cal{Q}_{\cal{P}P} = \set{Q \in \cal{Q}: Q \subseteq P}$. Clearly, for all $Q \in \cal{Q}_P$, 
+    \[m_P = \inf \set{f\of{x}: x \in P} \leq \inf \set{f\of{x}: x \in Q} = m_Q.\]
+    Hence, 
+    \[\sum_{Q \in \cal{Q}_P} m_Q v\of{Q} \geq \sum_{Q \in \cal{Q}_P} m_p v\of{Q} = m_P v\of{P}\]
+    But $\cal{Q}_P \cap \cal{Q}_{P'} = \emptyset$ when $P \neq P'$ and $\bigcup_{p \in P} \cal{Q}_P = \cal{Q}$. Therefore,
+    \[L_Q\of{f} = \sum_{Q \in \cal{Q}} m_Q v\of{Q} = \sum_{P \in \cal{P}} \left(\sum_{Q \in \cal{Q}_P} m_Q v\of{Q}\right) \geq \sum_{P \in \cal{P}} m_P v\of{P} = L_{\cal{P}}\of{f}\]
+    Similarly for the upper sums.
+\end{proof}
+
+\begin{corollary}
+    For any two partitions $\cal{P}$ and $\cal{P}'$ of $R$,
+    \[L_{\cal{P}}\of{f} \leq U_{\cal{P}'}\of{f}\]
+\end{corollary}
+\begin{proof}
+    Let $\cal{Q}$ be a common refinement of $\cal{P}$ and $\cal{P}'$.
+    Then \[L_{\cal{P}}\of{f} \leq L_{\cal{Q}}\of{f} \leq U_{\cal{Q}}\of{f} \leq U_{\cal{P}'}\of{f}\]
+\end{proof}
+
+Let $\P$ denote the collection of all partitions of the rectangle $R$.
+
+\begin{corollary}
+    \[\sup \set{L_{\cal{P}}\of{f}: \cal{P} \in \P} \leq \inf \set{U_{\cal{P}}\of{f}: \cal{P} \in \P}.\]
+\end{corollary}
+
+\begin{definition}[lower and upper integrals]
+    The \textbf{lower and upper (Darboux/Riemann) integrals} of a bounded function $f: R \to \R$ are defined by 
+    \[\int_{*R} f = \sup \set{L_{\cal{P}}\of{f}: \cal{P} \in \P} and \int_R^* f = \inf \set{U_{\cal{P}}\of{f}: \cal{P} \in \P},\]
+    respectively. If $\int_{*R} f = \int_R^* f$, then we say that $f$ is (Darboux/Riemann) integrable over $R$. The number $\int_{*R} f = \int_R^* f$ is called the (Darboux/Riemann) integral of $f$ pver $R$ and is denoted by $\int_R f$ or $\int_R f\of{x} dx$ or $\int_R f\of{x_1, \dots, x_n} dx_1 dx_2 \dots dx_n$ or $\int \int \dots \int_R f\of{x_1, \dots, x_n} dx_1 dx_2 \dots dx_n$.
+
+    In particular, when $n = 2$ (resp, $n = 3$) then \[\int\int_R f\of{x,y} dxfy (\int\int\int_R f\of{x,y,z} dxdydz)\]
+    is called the double (respectively, triple) integral of $f$ over $R$.
+\end{definition}
+
+\begin{example}[lower and upper integrals]
+    When $f: R \to \R$ is constant, $f\of{x} = c$ for all $x \in R$ then $U_{\cal{P}}\of{f} = L_{\cal{P}}\of{f} = cv\of{R}$ for any $\cal{P} \in \P$, and so $F$ is integrable over $R$ and $\int_R f = cv\of{R}$.
+\end{example}
+
+\begin{theorem}[The Riemann condition]
+    Let $R \subseteq R^n$ be a rectangle and $f: R \to \R$ a bounded function. Then $f$ is integrable over $R$ if and only if for all $\varepsilon > 0$, there exists a $\cal{P} \in \P$ such that
+    \[U_{\cal{P}}\of{f} - L_{\cal{P}}\of{f} < \varepsilon.\]
+\end{theorem}
+\begin{proof}
+    $\implies$: By the definition of the supremum and infimum, there exist $\cal{P}', \cal{P}'' \in \P$ such that
+    \[-\frac{\varepsilon}{2} + \int_R f < L_{\cal{P}'}\of{f} \leq \int_R f \text{ and } \int_R f \leq U_{\cal{P}''}\of{f} < \frac{\varepsilon}{2} + \int_R f (*)\]
+
+    Choosing a common refinement $\cal{P}$ of $\cal{P}'$ and $\cal{P}''$, (*) will also hold with $\cal{P}'$ and $\cal{P}''$ replaced by $\cal{P}$. Hence,
+
+    \[U_{\cal{P}}\of{f} - L_{\cal{P}}\of{f} < \left(\frac{\varepsilon}{2} + \int_R f\right) - \left(-\frac{\varepsilon}{2} + \int_R f\right) = \varepsilon.\]
+
+    $\impliedby$: Note that
+    \[0 \leq \int_R^* f - \int_{*R} f \leq U_{\cal{P}}\of{f} - L_{\cal{P}}\of{f} < \varepsilon.\]
+
+    Since $\varepsilon$ is arbitrary, $\int_R^* f = \int_{*R}$, i.e., $f$ is integrable.
+\end{proof}
+
+\begin{corollary}
+    If $f: R \to \R$ is integrable over $R \subseteq \R^n$ and $S \subseteq R$ is a subrectangle, then $f \restr S$ is integrable over $S$.
+\end{corollary}
+\begin{proof}
+    Let $\varepsilon > 0$. By the theorem, there exists a partition $\cal{P} \in \P$ such that $U_{\cal{P}}\of{f} - L_{\cal{P}}\of{f} < \varepsilon$. But $\cal{P}$ has a refinement $\cal{Q}$ such that $\cal{Q}' = \set{Q \in \cal{Q}: Q \subseteq S}$ is a partition of $S$. Then 
+    \[U_{\cal{Q}'}\of{f \restr S} - L_{\cal{Q}'}\of{f \restr S} = \sum_{Q \in \cal{Q}'} \left(M_Q - m_Q\right) v\of{Q} \leq \sum_{Q \in \cal{Q}} \left(M_Q - m_q\right) v\of{Q}\]
+    \[= U_{\cal{Q}}\of{f} - L_{\cal{Q}}\of{f} \leq U_{\cal{P}}\of{f} - L_{\cal{P}}\of{f} < \varepsilon\]
+\end{proof}
+
+\begin{corollary}
+    If $f: R \to \R$ is a continuous function on a rectangle $R \subseteq \R^n$ then $f$ is integrable over $R$.
+\end{corollary}
+\begin{proof}
+    Since $R$ is compact, $f$ is bounded. Moreover, $f$ is uniformly continuous. Thus, given $\varepsilon > 0$ there exists $\delta > 0$ such that $\abs{f\of{x} - f\of{y}} < \frac{\varepsilon}{v\of{R}}$ whenever $x,y \in \R$ and $\norm{x - y} < \delta$.
+
+    Let $\cal{P}$ be any partition with $\norm{P} < \delta$. Now, given $P \in \cal{P}$, by the EVT, $m_p = \inf \set{f\of{x}: x \in P} = f\of{x_P}$ and $M_p = \sup \set{f\of{x}: x \in P} = f\of{y_P}$ for some $x_P, y_P \in P$.
+
+    As $\diam P \leq \norm{\cal{P}} < \delta$, $M_P - m_P = f\of{y_P} - f\of{x_P} < \frac{\varepsilon}{v\of{R}}$.
+    Hence,
+    \[U_{\cal{P}}\of{f} - L_{\cal{P}}\of{f} = \sum_{P \in \cal{P}} (M_P - m_P) v\of{P} < \sum_{P \in \cal{P}} \frac{\varepsilon}{v\of{R}}v\of{P} = \varepsilon\]
+    Therefore the Riemann condition is satisfied.
+\end{proof}
+
+\begin{example}[an integrable function]
+    Let $R = [0,1] \times [0,1]$, and $g: R \to \R$ be given by $g\of{x,y} = \left\{\begin{matrix} 1 \text{ when } (x,y) = (\frac{1}{2}, \frac{1}{2}) \\ 0 \text{ otherwise} \end{matrix}\right.$.
+    Then $g$ is integrable. Indeed given $\varepsilon > 0$, choose a partition $\cal{P}$ of $R$ where the subrectangle $P \in \cal{P}$ with $(\frac{1}{2},\frac{1}{2}) \in P$ has $v\of{P} < \varepsilon$. Then $L_{\cal{P}}\of{g} = 0$ while $U_{\cal{P}}\of{g} = 1 \cdot v\of{P} < \varepsilon$. So the Riemann condition is satisfied.
+\end{example}
+
+\begin{theorem}
+    Let $f: R \to \R$ be an integrable function where $R \subseteq R^n$ is a rectangle. Then for all $\varepsilon > 0$ there exists $\cal{P}_\varepsilon \in \P$ such that the following holds:
+    
+    If $\cal{P} \in \P$ is a refinement of $\cal{P}_\varepsilon$ and for all $P \in \cal{P}$ a point $x_P \in P$ is chosen, then
+
+    \[\abs{\sum_{P \in \cal{P}} f\of{x_P v\of{P}} - \int_R f} < \varepsilon (*)\]
+\end{theorem}
+
+\begin{definition}[a Riemann sum]
+    Given a partition $\cal{P}$ of $R$, a choice of points $x_P \in P$ for all $P \in \cal{P}$ and a function $f: R \to \R$, the sum
+    \[\sum_{P \in \cal{P}} f\of{x_P} v\of{P}\]
+    is called the Riemann sum corresponding to the partition $\cal{P}$ and the choice of points $x_P \in P$ for all $P \in \cal{P}$.
+\end{definition}

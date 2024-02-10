@@ -1,0 +1,150 @@
+% camiregu 2024-jan-30
+\chapter{Constructing the integral}
+
+%----------------------------------------------------------------------------------------
+\begin{theorem}
+    Let $f: R \to \R$ be integrable where $R \subseteq R^n$ is a rectangle. Then for all $\varepsilon > 0$, there exists a particular $\cal{P}_\varepsilon$ of $R$ such that if $\cal{P}$ us a partition that is finer than $\cal{P}_\varepsilon$ and if for all $P \in \cal{P}$ a point $x_P \in P$ is chosen, then \[\abs{\sum_{P \in \cal{P}} f\of{x_P} v\of{P} - \int_R f} < \varepsilon\]
+\end{theorem}
+\begin{proof}
+    Proof omitted, I came late!
+\end{proof}
+
+\begin{theorem}
+    Let $f: R \to \R$ be a bounded function where $R \subseteq \R^n$ is a rectangle. Then $f$ is integrable over $R$ $\iff$ there exists a number $s$ with the following property:
+    \[\forall \varepsilon > 0 \exists \text{ a partition } \cal{P} \text{ of } R \text{ such that } \abs{\sum_{P \in \cal{P}} f\of{x_P} v\of{P}} < \varepsilon \]
+    for any choice of points $x_P \in P$ for all $P \in \cal{P}$.
+\end{theorem}
+\begin{proof}
+    $\implies$: V (last theorem with $s = \int_R f$ and $\cal{P} = \cal{P}_\varepsilon$)
+
+    $\impliedby$: We will show that the Riemann condition holds. Our assumption ensures that for all $\varepsilon > 0$ there exists a partition $\cal{P}$ such that
+    \[s - \frac{\varepsilon}{4} < \sum_{P \in \cal{P}} f\of{x_P} v\of{P} < s + \frac{\varepsilon}{4}\]
+    for any choice of $x_P \in P$ for all $P \in \cal{P}$.
+
+    But from the definition of the supremum and infimum, we can choose $\xi_P, \eta_P \in P$ such that
+    \[m_P = \inf\set{f\of{x}: x \in P} \leq f\of{\xi_P} < m_P + \frac{\varepsilon}{4v\of{R}}\]
+    \[\text{and } M_P = \sup\set{f\of{x}: x \in P} \geq f\of{\eta_P} > M_P - \frac{\varepsilon}{4v\of{R}}.\]
+
+    Then
+    \[L_{\cal{P}}\of{f} = \sum_{P \in \cal{P}} m_P v\of{P} > \sum_{P \in \cal{P}} \left(f\of{\xi_P - \frac{\varepsilon}{4v\of{R}}}\right)v\of{P} = \sum_{P \in \cal{P}} \left(f\of{\xi_P}\right)v\of{P} - \frac{\varepsilon}{4} > s - \frac{\varepsilon}{2},\]
+    and similarly,
+    \[U_{\cal{P}}\of{f} = \sum_{P \in \cal{P}} M_P v\of{P} < \sum_{P \in \cal{P}} \left(f\of{\eta_P + \frac{\varepsilon}{4v\of{R}}}\right)v\of{P} = \sum_{P \in \cal{P}} \left(f\of{\eta_P}\right)v\of{P} + \frac{\varepsilon}{4} < s - \frac{\varepsilon}{2}.\]
+    Consequently,
+    \[U_{\cal{P}}\of{f} - L_{\cal{P}}\of{f} < s + \frac{\varepsilon}{2} - \left(s - \frac{\varepsilon}{2}\right) = \varepsilon.\]
+\end{proof}
+
+\begin{remark}
+    If the number $s$, as defined in the last theorem exists, then $s = \int_R f$. (exercise)
+\end{remark}
+
+\begin{definition}[volume zero]
+    A subset $S \subseteq R^n$ is said to have \textbf{$n$-dimensional volume zero}, written $v\of{S} = 0$, if for all $\epsilon > 0$ there exist rectangles $R_1, R_2, \dots, R_n$ such that $S \subseteq \bigcup_{i = 1}^n R_i$ and $\sum_{i = 1}^n v\of{R_i} < \epsilon$.
+\end{definition}
+
+\begin{example}
+    \begin{itemize}
+        \item Every finite subset of $R^n$ has the $n$-dimensional volume 0.
+        \item The countable set $S = \Q \cap [0,1]$ does not have 1-dimensional volume 0. [Indeed, if $S \subseteq \bigcup_{i=1}^n R_i$ where $R_i$ are closed interbals, then as $\bigcup_{i=1}^n R_i$ where $R_i$ are closed intervals, then as $\bigcup_{i=1}^n R_i$ is closed, $[0,1] = \bar{S} \subseteq \bigcup_{i=1}^n R_i$. Thus $\sum_{i=1}^n v\of{R_i} = \sum_{i=1}^n \mathrm{length}\of{R_i} \geq 1$.]
+        \item If $R \subset \R^n$ is a rectangle then $\partial R$ has $n$-dimensional volume 0. Indeed, if $R = \Pi_{i=1}^n [a_i,b_i]$ then $\partial R = \bigcup_{i=1}^n \left(\set{x \in R: x_i = a_i} \cup \set{x \in R: x_i = b_i}\right)$. But for any $\eta > 0$, $\set{x \in R: x_i = a_i} \subseteq R_i = [a_i,b_i] \times \cdots \times [a_{i-1}, b_{i-1}] \times [a_i - \eta_i, b_i] \times [a_{i+1},b_{i+1}] \times [a_n, b_n]$ where $v\of{R_i} = \eta \Pi_{j=1, j\neq i}^n (b_j - a_j)$. Hence, $\set{x \in R: x_i = a_i}$ has volume zero. Similarly, $\set{x \in R: x_i = b_i}$ has volume zero, since the union of finitely many sets of zero volume is a set of zero volume, $\partial R$ has volume zero.
+    \end{itemize}
+\end{example}
+
+\begin{proposition}
+    If $f: \Omega \to \R$ is continuous, where $\Omega \subseteq \R^n$ is compact, then $\mathrm{graph}\of{f} = \set{(x,y) \in \R^{n+1}: x \in \Omega \text{ and } y = f\of{x}}$ has $(n+1)$-volume zero.
+
+    More generally, for any $k = 1,2,\dots,n+1$, the set $S = \set{(x+1, \dots, x_{n+1}): (x_1, \dots, x_{k-1}, x_{k+1}, \dots, x_{n+1}) \in \Omega \text{ and } x_k = f\of{x_1, \dots, x_{k-1}, x_{k+1}, \dots, x_{n+1}}}$ has $(n+1)$-dimensional volume zero.
+\end{proposition}
+\begin{proof}
+    Note that $\Omega$ is contained in a rectangle $R \subseteq \R^n$. As $f$ is uniformly continuous, given $\varepsilon > 0$, there exists an $s > 0$ such that $\abs{f\of{x} - f\of{x'}} < \frac{\varepsilon}{4v\of{R}}$ whenever $x, x' \in \Omega$ and $\norm{x - x'} < \delta$.
+
+    Choose a partition $\cal{P}$ of $R$ with $\norm{\cal{P}} < \delta$ and let $\cal{P}_* = \set{P \in \cal{P}: P \cap \Omega \neq \emptyset}$. Note $\Omega \subseteq \bigcup_{P \in \cal{P}_*} P$. Given $P \in \cal{P}$, choose some $x_P \in P \cap \Omega$ and let $R_P = P \times [f\of{x_P} - \frac{\varepsilon}{4v\of{R}}, f\of{x_P} + \frac{\varepsilon}{4v\of{R}}]$ which is a rectangle in $\R^{n+1}$ with $v\of{R_P} = v\of{P} - \frac{\varepsilon}{2v\of{R}}$.
+
+    Note that if $(x,y) \in \mathrm{graph}\of{f}$ then $x \in P$ for some $P \in \cal{P}_*$. Since $\norm{\cal{P}} < \delta$, so $\norm{x = x_P} < s$ and so $f\of{x} \in [f\of{x_P} - \frac{\varepsilon}{4v\of{R}}, f\of{x_P} + \frac{\varepsilon}{4v\of{R}}]$. It follows that $(x,y) \in R_P$. Consequently, $\mathrm{graph}\of{f} \subseteq \bigcup_{P \in \cal{P}_*} R_P$. But \[\sum_{P \in \cal{P}_*} v\of{R_P} = \sum_{P \in \cal{P}_*} v\of{P} \frac{\varepsilon}{2v\of{R}} = \frac{\varepsilon}{2} < \varepsilon.\]
+
+    As $\varepsilon > 0$ is arbitrary, $\mathrm{graph}\of{f}$ has $(n+1)$-dimensional volume zero.
+\end{proof}
+
+\begin{theorem}
+    Let $f: R \to \R$ be a bounded function where $R \subseteq R^n$ is a rectangle. If $D = \set{x \in R: f \text{ is discontinuous at } x}$ has $n$-dimensional volume zero, then $f$ is integrable over $R$.
+\end{theorem}
+
+\section{Basic properties of integrals over rectangles}
+
+\begin{theorem}[*1]
+    Let $f,g: R \to \R$ be integrable over the rectangle $R \subseteq \R^n$ and let $c \in \R$. Then:
+    \begin{enumerate}
+        \item $cf$ is integrable over $R$, and $\int_R cf = c\int_R f$.
+        \item $f + g$ is integrable over $R$ and $\int_R f + g = \int_R f + \int_R g$.
+        \item If $g \leq f$ on $R$, then $\int_R g \leq \int_R f$.
+        \item $\abs{f}$ is integrable over $R$ and $\abs{\int_R f} \leq \int_R \abs{f}$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    In the same order as before,
+    \begin{itemize}
+        \item We may assume that $c \neq 0$, let $\varepsilon > 0$. As $f$ is integrable over $R$, there exists a partition $\mathcal{P}$ of $R$ such that for any choice of $x_P \in P$ for all $P \in \cal{P}$, \[\abs{\sum_{P \in \cal{P}} f\of{x_P} v\of{P} - \int_R f} < \frac{\varepsilon}{c}.\] But then \[\abs{\sum_{P \in \cal{P}} cf\of{x_P} v\of{P} - c\int_R f} > \varepsilon.\]
+        
+        Hence, $cf$ is integrable and $\int_R cf = c\int_R f$ by the 2nd theorem about Riemann sums.
+
+        \item We again use Riemann sums. Given $\varepsilon > 0$ there exists a partition $\cal{P}_\varepsilon'$ (respectively, $\cal{P}_\varepsilon''$) such that for every partition $\cal{P}$ that is finer than $\cal{P}_\varepsilon'$ (respectively, $\cal{P}_\varepsilon''$) and for any choice of points $x_P \in P$ for all $P \in \cal{P}$,
+        \[\abs{\sum_{P \in \cal{P}} f\of{x_P} v\of{P} - \int_R f} < \frac{\varepsilon}{2} \text{(respectively, } \abs{\sum_{P \in \cal{P}} g\of{x_P} v\of{P} - \int_R g} < \frac{\varepsilon}{2} \text{)}\]
+
+        Let $\cal{P}$ be a common refinement of $\cal{P}_\varepsilon'$ and $\cal{P}_\varepsilon''$. Then for any choice of points $x_P \in P$ for all $P \in \cal{P}$,
+        \[\abs{\sum_{P \in \cal{P}} \left(f\of{x_P} + g\of{x_P}\right) v\of{P} - \left(\int_R f + \int_R g\right)} \leq \abs{\sum_{P \in \cal{P}} f\of{x_P} v\of{P} - \int_R f} + \abs{\sum_{P \in \cal{P}} g\of{x_P} v\of{P} - \int_R g} <\]
+        \[<  \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon,\]
+
+        Hence, by the 2nd theorem about Riemann sums, $f + g$ is integrable over $R$ and $\int_R f + g = \int_R f + \int_R g$.
+
+        \item Clearly, $f - g \geq 0$ and so for any partition $\cal{P}$ of $R$, $L_{\cal{P}}\of{f-g} \geq 0$. Hence, $\int_R f-g \geq L_{\cal{P}}\of{f-g} \geq 0$ (we used the first two parts). Then again by these first two parts, $\int_R f - \int_R g = \int_R f-g \geq 0$, so $\int_R f \geq \int_R g$
+    \end{itemize}
+\end{proof}
+
+\begin{proof}
+    \begin{itemize}
+        \item We will use the Riemann condition. Let $\cal{P}$ be a partition of $R$ and given $P \in \cal{P}$, let $\begin{matrix}
+            m_P = \inf{\set{f\of{x}: x \in P}} & M_P = \sup{\set{f\of{x}: x \in P}} \\
+            \bar{m_P} = \inf \set{\abs{f\of{x}}: x \in P} & \bar{M_P} = \sup \set{\abs{f\of{x}}: x \in P}
+        \end{matrix}$. Note that if $x, x' \in P$ then
+        \[\abs{\abs{f\of{x}} - \abs{f\of{x'}}} \leq \abs{f\of{x} - f\of{x'}} \leq M_P - m_P.\]
+        Thus, \[\abs{f\of{x} \leq M_P - m_P + \abs{f\of{x'}}}.\]
+        Hence, keeping $x'$ fixed, $\bar{M_P} = \sup \set{\abs{f\of{x}}: x \in P} \leq M_P - m_P + \abs{f\of{x'}}$ for all $x' \in P$, and so \[\bar{M_P} - M_P + m_P \leq \abs{f\of{x'}}.\]
+        Hence, $\bar{M_P} - M_P + m_P \leq \inf \set{\abs{f\of{x'}}: x' \in P} = \bar{m_P}$,
+        and so \[\bar{M_P} - \bar{m_P} \leq M_P = m_P.\]
+
+        Therefore, $U_{\cal{P}}\of{\abs{f}} - L_{\cal{P}}\of{\abs{f}} = \sum_{P \in \cal{P}} \left(\bar{M_P} - \bar{m_P}\right) v\of{P} \leq \sum_{P \in \cal{P}} \left(M_P - m_P\right) v\of{P} = U_{\cal{P}}\of{f} - L_{\cal{P}}\of{f}$.
+
+        But by integrability of $f$ and the Riemann condition, for any $\varepsilon > 0$, $\cal{P}$ can be chosen so that $U_{\cal{P}}\of{f} - L_{\cal{P}}\of{f} < \varepsilon$. Therefore the Riemann condition is also satisfied by $\abs{f}$, so that $\abs{f}$ is integrable over $R$.
+
+        Then as $- \abs{f} \leq f \leq \abs{f}$, $-\int_R \abs{f} \leq \int_R f \leq \int_R \abs{f}$ by the first two parts. Thus $\abs{\int_R f} \leq \int_R \abs{f}$.
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}[*2]
+    Let $f: R \to \R$ be a bounded function where $R \subseteq \R^n$ is a rectangle. If $E = \set{x \in R: f\of{x} \neq 0}$ has $n$-dimensional volume zero then $f$ is integrable over $R$ and $\int_R f = 0$. 
+\end{theorem}
+
+\begin{corollary}[*3]
+    Let $f,g: R \to \R$ be bounded functions where $R \subseteq \R^n$ is a rectangle. If $f$ is integrable over $R$ and $\set{x \in R: g\of{x} \neq f\of{x}}$ has zero volume, then $g$ is integrable over $R$ and $\int_R f = \int_R g$.
+\end{corollary}
+\begin{proof}
+    By theorem *2, $g-f$ is integrable over $R$ and $\int_R \left(g - f\right) = 0$. Hence, $g = g - f + f$ is integrable $\int_R g = \int_R \left(g - f\right) + \int_R f = \int_R f$.
+\end{proof}
+
+Let $R = [a_1,b_1] \times \cdots \times [a_n, b_n] = \Pi_{i=1}^n [a_i,b_i]$ be a rectangle and $f: R \to \R$ a bounded function. Given a permutation $\sigma$ of $\set{1,2,\dots,n}$ and $x = (x_1,\dots,x_n)$, $f\of{x_{\sigma\of{1}}, x_{\sigma\of{2}}, \dots, x_{\sigma\of{n}}}$ is defined whenever $\left(x_{\sigma\of{1}}, x_{\sigma\of{2}}, \dots, x_{\sigma\of{n}}\right) \in R$, i.e., whenever $x_{\sigma\of{i}} \in [a_i,b_i]$ for all $i = 1, 2, \dots, n$, or equivalently whenever $x_i \in [a_{sigma\inv\of{i}}, b_{sigma\inv\of{i}}]$ i.e., $x \in \Pi_{i=1}^n [a_{\sigma\inv\of{i}}, b_{\sigma\inv\of{i}}] = R_\sigma$. Thus the formula,
+\[f_\sigma\of{x_1, \dots, x_n} = f\of{x_{\sigma\of{1}}, \dots, x_{\sigma\of{n}}}\]
+defines a bounded function $f_\sigma: R_\sigma \to \R$. it is straightforward to see that we have a one-to-one correspondence between partitions of $R$ and partitions of $R_\sigma$ and that the corresponding lower and upper sums for $f$ and $f_\sigma$ have the same values. Hence,
+
+\begin{theorem}
+    If $f: R \to \R$ is integrable over the rectangle $R = \Pi_{i=1}^n [a_i, b_i]$, then for any permutation $\sigma$ of $\set{1,2,\dots,n}$, the function $f_\sigma: R_\sigma \to \R$ as defined above is integrable over $R_\sigma$ and $\int_R f = \int_{R_\sigma} f_\sigma$, or
+    \[\int f\of{x_1, \dots, x_n} dx_1 \dots dx_n = \int f\of{x_{\sigma\of{1}}, \dots, x_{\sigma\of{n}}} dx_1 \dots dx_n.\]
+\end{theorem}
+
+Example omitted due to sleepiness.
+
+Let $w = \left(w_1, \dots, w_n\right) \in \R^n$ be fixed. Clearly, if $R = \Pi_{i=1}^n [a_i,b_i]$ is a rectangle then $R - w = \set{x - w: x \in R} = \Pi_{i=1}^n [a_i - w_i, b_i - w_i]$ is another rectangle and if $f: R \to \R$ is a bounded function, then the function $f_w$ given by $f_w\of{x} = f\of{x + w}$ is defined for $x \in R - w$. We have a one-to-one correspondence between partitions of $R$ and partitions of $R-w$ and the corresponding lower and upper sums for $f$ and $f_w$ have the same values. Hence,
+
+\begin{theorem}
+    If $f: R \to \R$ is integrable over the rectangle $R = \Pi_{i=1}^n [a_i,b_i]$ then for any $w \in R^n$ the function $f_w: R-w \to \R$ defined above is integrable over $R - w$ and \[\int_R f = \int_{R-w} f_w,\] or, \[\int_R f\of{x} dx = \int_{R-w} f\of{x+w} dx\]
+\end{theorem}
+
+Suppose $\lambda \in \left(\R \backslash \set{0}\right)^n = \set{x \in \R^n: x_1, \dots, x_n \neq 0}$. Then given a rectangle $R = \Pi_{i=1}^n [a_i,b_i]$ the set $R_\lambda = \set{(\frac{1}{\lambda_1}x_1,\dots,\frac{1}{\lambda_n}x_n,): (x_1, \dots, x_n) \in R} = \Pi_{i=1}^n \left[\min \set{\frac{a_i}{\lambda_i}, \frac{b_i}{\lambda_i}}, \max \set{\frac{a_i}{\lambda_i}, \frac{b_i}{\lambda_i}}\right]$ is another rectangle with $v\of{R_\lambda} = \abs{\Pi_{i=1}^n \lambda_i\inv}v\of{R}$ and if $f: R \to \R$ is a bounded function, then the function $f_\lambda$, given by $f_\lambda\of{x_1, \dots, x_n} = f\of{\lambda x_1, \dots, \lambda_n x_n}$ is defined for $(x_1, \dots, x_n) \in R_\lambda$.

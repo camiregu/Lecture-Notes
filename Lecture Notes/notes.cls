@@ -15,8 +15,6 @@
 
 
 %%% 3rd party packages
-% for cooler commands
-\RequirePackage{xparse}
 % AMS Packages for environments, shortcuts, and fonts
 \RequirePackage{amsthm}
 \RequirePackage{amsmath}
@@ -227,22 +225,27 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathbb{P}}
 % Math Symbols
 \newcommand{\inv}{^{-1}}
 \newcommand{\grad}{\nabla}
 \DeclareMathOperator{\Lapl}{\mathcal{L}}
 \DeclareMathOperator{\diam}{\mathrm{diam}}
-%\newcommand{\cal}[1]{\mathcal{#1}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\renewcommand{\cal}[1]{\mathcal{#1}}
 \newcommand{\eval}[1]{\left.#1\right|}
 \newcommand{\restr}{\vert}
 \newcommand{\divides}{\mid}
 \newcommand{\ord}[1]{\left|#1\right|}
+\newcommand{\abs}[1]{\left|#1\right|}
 \newcommand{\set}[1]{\left\{#1\right\}}
 \newcommand{\cygr}[1]{\langle#1\rangle}
 \newcommand{\of}[1]{\left(#1\right)}
 \newcommand{\norm}[1]{\lVert#1\rVert}
 \DeclareMathOperator{\lcm}{lcm}
 \newcommand{\prdr}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\cosets}[2]{\frac{#1}{#2}}
 % Cycle command taken from StackExchange, still don't understand
 \ExplSyntaxOn
 \NewDocumentCommand{\cyc}{ O{\;} m }
