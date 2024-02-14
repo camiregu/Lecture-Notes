@@ -147,4 +147,18 @@ Let $w = \left(w_1, \dots, w_n\right) \in \R^n$ be fixed. Clearly, if $R = \Pi_{
     If $f: R \to \R$ is integrable over the rectangle $R = \Pi_{i=1}^n [a_i,b_i]$ then for any $w \in R^n$ the function $f_w: R-w \to \R$ defined above is integrable over $R - w$ and \[\int_R f = \int_{R-w} f_w,\] or, \[\int_R f\of{x} dx = \int_{R-w} f\of{x+w} dx\]
 \end{theorem}
 
-Suppose $\lambda \in \left(\R \backslash \set{0}\right)^n = \set{x \in \R^n: x_1, \dots, x_n \neq 0}$. Then given a rectangle $R = \Pi_{i=1}^n [a_i,b_i]$ the set $R_\lambda = \set{(\frac{1}{\lambda_1}x_1,\dots,\frac{1}{\lambda_n}x_n,): (x_1, \dots, x_n) \in R} = \Pi_{i=1}^n \left[\min \set{\frac{a_i}{\lambda_i}, \frac{b_i}{\lambda_i}}, \max \set{\frac{a_i}{\lambda_i}, \frac{b_i}{\lambda_i}}\right]$ is another rectangle with $v\of{R_\lambda} = \abs{\Pi_{i=1}^n \lambda_i\inv}v\of{R}$ and if $f: R \to \R$ is a bounded function, then the function $f_\lambda$, given by $f_\lambda\of{x_1, \dots, x_n} = f\of{\lambda x_1, \dots, \lambda_n x_n}$ is defined for $(x_1, \dots, x_n) \in R_\lambda$.
+Suppose $\lambda \in \left(\R \backslash \set{0}\right)^n = \set{x \in \R^n: x_1, \dots, x_n \neq 0}$. Then given a rectangle $R = \Pi_{i=1}^n [a_i,b_i]$ the set $R_\lambda = \set{(\frac{1}{\lambda_1}x_1,\dots,\frac{1}{\lambda_n}x_n,): (x_1, \dots, x_n) \in R} = \Pi_{i=1}^n \left[\min \set{\frac{a_i}{\lambda_i}, \frac{b_i}{\lambda_i}}, \max \set{\frac{a_i}{\lambda_i}, \frac{b_i}{\lambda_i}}\right]$ is another rectangle with $v\of{R_\lambda} = \abs{\Pi_{i=1}^n \lambda_i\inv}v\of{R}$ and if $f: R \to \R$ is a bounded function, then the function $f_\lambda: R_\lambda \to \R$, given by $f_\lambda\of{x_1, \dots, x_n} = f\of{\lambda x_1, \dots, \lambda_n x_n}$ is defined for $(x_1, \dots, x_n) \in R_\lambda$.
+
+We have again a one-to-one correspondence between partitions of $R$ and partitions of $R_\lambda$ and the corresponding lower and upper sums for $f$ and $f_\lambda$ are related by:
+\[\text{(sum for $f$ over $R$)} = \abs{\Pi_{i=1}^n \lambda_i} \cdot \text{(sum for $f_\lambda$ over $R_\lambda$)}\]
+
+\begin{theorem}
+    If $f$ is integrable over $R = \Pi_{i=1}^n [a_i,b_i]$ then for any $\lambda \in \left(\R \backslash \set{0}\right)^n$ the function $f_\lambda: R_\lambda \to \R$ defined above is integrable over $R_\lambda$ and \[\int_R f = \abs{\Pi_{i=1}^n \lambda_i} \int_{R_\lambda} f_\lambda,\]
+    or \[\int_R f\of{x_1, \dots, x_n} dx_1 \dots dx_n = \abs{\Pi_{i=1}^n \lambda_i} \int_{R_\lambda} f\of{\lambda_1 x_1, \dots, \lambda_n x_n} dx_1 \dots dx_n.\]
+\end{theorem}
+
+\begin{example}
+    $\int_{[0,2] \times [-3,6]} f(x,y) dxdy = 6 \int_{[0,1] \times [-2,1]} f\of{2x,-3y} dxdy$.
+
+    Here $\lambda = (2, -3)$.
+\end{example}
