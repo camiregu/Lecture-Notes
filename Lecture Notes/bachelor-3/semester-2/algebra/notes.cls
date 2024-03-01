@@ -1,0 +1,1 @@
+Projects/Lecture-Notes/Lecture Notes/notes.cls

@@ -1,0 +1,37 @@
+% camiregu 27-feb-2024
+\chapter{Factor groups}
+
+%--------------------------------
+% DAY 1
+\begin{definition}[the factor group]
+	Suppose $H \normin G$. Then the group $\cosets{G}{H}$ is called the \textbf{factor group} of $G$ relative to $H$. (also \textbf{quotient group}.)
+\end{definition}
+
+\begin{theorem}
+	Suppose $H \normin G$. Then $\cosets{G}{H}$ is a group under the multiplication given by \[(aH)(bH) = abH,\] for all $aH, bH \in \cosets{G}{H}$.
+\end{theorem}
+
+\begin{recall}
+	from a previous lemma that $aH = a'H \iff H = a\inv a'H \iff a\inv a' \in H \iff a\inv a' = h$ for some $h \in H \iff a' = ah$ for some $h \in H$.
+\end{recall}
+
+In order for the theorem to make sense, we need to show that $(ahH)(bH) = abH = (aH)(bH)$ for any $h \in H$. Showing this property has a name. It's called showing the multiplication is \textbf{well-defined}.
+
+\begin{proof}
+	Let's show that the multiplication is well-defined, i.e., $(ahH)(bH) = abH = (aH)(bH)$ for any $h \in H$. Suppose $aH, bH \in \cosets{G}{H}$ and $h \in H$. Then $(ahH)(bH) = (ah)bH = abb\inv hbH = ab(b\inv h b)H$. Since $H \normin G$, $b\inv h b = b\inv h (b\inv)\inv \in H$ so $(b\inv h b)H = H$, so $(ahH)(bH) = ab(b\inv h b)H = abH = (aH)(bH)$. A similar argument can be used to show $(aH)(bhH) = (aH)(bH)$ for all $h \in H$, so the multiplication is well-defined.
+
+	Since the multiplication is well-defined, we check the group axioms next.
+	\begin{enumerate}
+		\item Identity: $eH = H$. Indeed $(eH)(aH) = eaH = aH$ and $(aH)(eH) = aeH = aH$ for all $aH \in \cosets{G}{H}$.
+		\item Inverse: Suppose $aH \in \cosets{G}{H}$. Then $(aH)\inv = a\inv H$ since $(a\inv H)(aH) = a\inv a H = eH = H$, and similarly on the other side.
+		\item Associativity: Trivial, since $(ab)c = a(bc)$.
+	\end{enumerate}
+\end{proof}
+
+\begin{example}[of the theorem]
+	$G = \Z, H=3\Z = \cygr{3}$.V
+
+	$\cosets{\Z}{3\Z} = {0 + 3\Z, 1 + 3\Z, 2 + 3\Z} = \cygr{1 + 3\Z}$.
+
+	$(1 + 3\Z) + (1 + 3\Z) = (1+1) + 3\Z = 2 + 3\Z$.
+\end{example}

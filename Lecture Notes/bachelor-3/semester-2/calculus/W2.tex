@@ -1,0 +1,179 @@
+% camiregu 2024-jan-16
+\chapter{Inverse Function Theorem and Implicit Function Theorem}
+
+%----------------------------------------------------------------------------------------
+\begin{theorem}
+    Let $I \subseteq \R$ be an interval and $f: I \to \R$ is a continuous injective function. Then:
+    \begin{enumerate}
+        \item $f$ is either strictly increasing or strictly decreasing.
+        \item $f(I)$ is an interval containing the same number of endpoints as $I$.
+        \item $f$ is a homeomorphism of $I$ onto $f(I)$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item Let us first consider the case that $I = [a, b] (a < b)$. Since $f$ is injective, either $f(a) < f(b)$ or $f(b) < f(a)$. Assume that $f(a) < f(b)$ (the other case can be done symmetrically). Let's show that $f$ is strictly increasing on $[a,b]$, i.e., $f(x) < f(y)$ whenever $a \leq x < y \leq b$. We argue by contradiction, supposing that $f(x) > f(y)$ for some $a \leq x < y \leq b$. \\ 
+        Note that $f(y) > f(a)$, for otherwise $f(y) < f(a) < f(b)$ and by the Intermediate Value Theorem (IVT), $\exists \alpha \in (y,b)$ such that $f(\alpha) = f(a)$, contradicting the injectivity of $f$. Therefore $f(a) < f(y) < f(x)$ and so, again, by the IVT $\exists y' \in (a,x)$ such that $f(y') = f(y)$, again contradicting the injectivity of $f$. \\
+        Next, let $I$ be any interval. Pick up any $a, b \in I$ with $a < b$. Suppose that $f(a) < f(b)$ (the case $f(a) > f(b)$ can be done symmetrically). By the previous paragraph, we know that $f$ is strictly increasing on $[a,b]$. Now, if $x, y \in I$ and $x < y$, then with $\alpha = \min \{a, x\}, \beta = \max \{y, b\}$, we have $[a,b], [x, y] \subseteq [\alpha, \beta] \subseteq I$. \\
+        Since $f$ is strictly increasing on $[a,b]$, we must have (using the 1st paragraph again) $f(\alpha) < f(\beta)$ and $f$ is strictly increasing on $[\alpha, \beta]$. Hence, we conclude that $f$ is strictly increasing on $I$.
+        \item Since $f$ is continuous, $J = f(I)$ is an interval. Suppose that $f$ is strictly increasing. Note that the inverse function $f \inv$ is then also strictly increasing. \\
+        Now, if $I$ contains its left endpoint $a$, then $\forall x \in I$, $f(a) \leq f(x)$, so $f(a)$ is a left endpoint of $J$. Similarly, if $I$ contains its right endpoint $b$, then $f(b)$ is the right endpoint of $J$. Applying the same argument with $f \inv$ in place of $f$, we conclude if $I$ contains its left (respectively, right) endpoint $c$, then $f \inv (c)$ is the left (respectively, right) endpoint of $I$. It follows that $I$ and $J$ contain the same number of endpoints.
+        \item If $I = [a,b]$, then $f$ is a homeomorphism of $I$ onto $f(I)$ because of our general result about continuous injective functions on compact sets. \\
+        Otherwise, it follows that $f \restr [a,b]$ is a homeomorphism onto $f([a,b])$ for any $a,b \in I$ with $a \leq b$. This implies that $f \inv: f(I) \to I$ is continuous (at any $y \in f(I)$). \\
+        Indeed, let $y \in f(I)$ and consider any sequence $(y_n)$ in $f(I)$ with $y_n \to y$. Then the set $S = \{y\} \cup \{y_n: n \in N\}$ is compact, so it has both a smallest element $c = f(a)$ and a largest element $d = f(b)$. Assuming that $f$ is strictly increasing we must have $a \leq b$, and $f([a,b]) = [c,d] \supseteq S$. Since $f \restr [a,b]$ is a homeomorphism onto $[c,d]$ (i.e., $(f \restr [a,b])\inv = f\inv \restr [c,d]$ is continuous), we obtain $f \inv (y_n) = (f \inv \restr [c,d])(y_n) \to (f \inv \restr [c,d])(y) = f \inv (y)$. It follows that $f \inv$ is continuous at any $y \in f(I)$.
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    Let $f$ be a bijection of a non-zero interval $I \subseteq \R$ onto an interval $J \subseteq \R$. If $f$ is differentiable at $a \in I$, $f'\of{a} \neq 0$, and $f\inv$ is continuous at $f\of{a}$ and $(f\inv)'(f\of{a}) = \frac{1}{f'\of{a}}$
+\end{theorem}
+\begin{proof}[(Sketch)]
+    
+\end{proof}
+
+\begin{definition}[a diffeomorphism]
+    Let $f$ be a bijection of an open subset $U \subseteq \R^n$ onto an open subset $V \subseteq \R^n$. If both $f$ and $f\inv$ are differentiable (on $U$ and $V$ respectively), then $f$ is called a \textbf{diffeomorphism} of $U$ onto $V$. If both $f$ and $f\inv$ are $C^k$ functions ($k=1, 2, \dots, \infty$), then $f$ is called a \textbf{diffeomorphism of class $C^k$}.
+\end{definition}
+
+\begin{corollary}
+    Let $f$ be a differentiable homeomorphism of an open subset $U \subseteq \R$ onto an open subset $V \subseteq \R$. If $f'\of{a} \neq 0$ for all $a \in U$, then $f$ is a diffeomorphism of $U$ onto $V$. Moreover, if $f \in C^k\of{U}$, then $f$ is a $C^k$ diffeomorphism.
+\end{corollary}
+\begin{proof}
+    If $b = f\of{a} \in V$ (where $a \in U$), then there exists an open interval $I \subseteq U$ such that $a \in I$. Then $f\of{I}$ is another open interval and $f \restr I$ is a homeomorphism onto $f\of{I}$ (by the Inverse Function Theorem), and $f \restr I$ satisfies the assumptions of the above theorem. Hence, $\left(f \restr I\right)\inv = f\inv \restr f\of{I}$ is differentiable at $b$. But this means that $f\inv$ is differentiable at $b$. Since $b \in V$ is artbitrary, $f\inv$ is differentiable on $V$ and so $f$ is a diffeomorphism. \\
+    We also have $\left(f\inv\right)'\of{b} = \frac{1}{f\inv\of{a}} = \frac{1}{f'\of{f\inv\of{b}}}$ for any $b = f\of{a} \in V$. \\
+    Thus, $\left(f\inv\right)' = \frac{1}{f'} \circ f\inv$. That $f\inv$ is $C^k$ when $f$ is $C^k$ follows by induction on $k = 1, 2, \dots$: When $k = 1$, then $\frac{1}{f'}$ is continuous (as $f \in C^1\of{U}$), and $f\inv$ is continuous, so $\left(f\inv\right)' = \frac{1}{f'} \circ f\inv$ is continuous. Assuming that our claim is true for $C^k$ functions, consider $f \in C^{k+1}\of{U}$. Then $f' \in C^k\of{U}$, and as $f \in C^k\of{U}$, $f\inv \in C^k\of{V}$ by induction. Hence, $\left(f\inv\right)' = \frac{1}{f'} \circ f\inv$ is a $C^k$ function as the composition of two $C^k$ functions. Therefore $f\inv \in C^{k}\of{V}$ 
+\end{proof}
+
+\begin{corollary}[Inverse Function Theorem in 1 variable]
+    Let $I \subset \R$ be an open interval and $f: I \to \R$ a $C^k$ function such that $f'\of{x} \neq 0$ for all $x \in I$. Then $f$ is a $C^k$ diffeomorphism of $I$ onto $f\of{I}$.
+\end{corollary}
+\begin{proof}
+    By the IVT either $f'\of{x} > 0$ for all $x \in I$ (i.e., $f$ is strictly increasing) or $f'\of{x} < 0$ for all $x \in I$ (i.e., $f$ is strictly decreasing). Hence, $f$ is injective and is a homeomorphism of $I$ onto an open interval $J$. The assumption of the previous corollary are satisfied, hence the conclusion.
+\end{proof}
+
+\begin{corollary}[Inverse Function Theorem in 1 variable, local version]
+    Let $U \in \R$ be open and $f: U \to \R$ be a $C^k$ function. If $f'\of{a} \neq 0$ at some $a \in U$, then there exists an open interval $I$ such that $a \in I \subseteq U$ and $f \restr I$ is a $C^k$ diffeomorphism of $I$ onto $f\of{I}$
+\end{corollary}
+
+How do these results generalize to functions of $n$ variables?
+
+\begin{theorem}
+    Let $\Omega \subseteq \R^n$ be an open set and let $f: \Omega \to \R^n$ be injective. Then $f\of{\Omega}$ is open and $f$ is a homeomorphism of $\Omega$ onto $f\of{\Omega}$.
+\end{theorem}
+\begin{proof}
+    Omitted due to high difficulty.
+\end{proof}
+
+\begin{lemma}
+    If $T: \R^n \to \R^n$ is an invertible linear transformation then there exists a $c > 0$ such that for all $x \in \R^n$, $\Vert T\of{x} \Vert \geq C\Vert x \Vert$
+\end{lemma}
+\begin{proof}
+    Recall that $T\inv$ is a Lipschitz function, i.e., there exists $M > 0$ such that $\Vert T\inv\of{x} \Vert \leq M \Vert x \Vert$ for all $x \in \R^n$. Hence, for all $x \in \R^n$, $\Vert x \Vert = \norm{T\inv\of{T\of{x}}} \leq M \norm{T\of{x}}$, so $\norm{T\of{x}} \geq \frac{1}{M} \norm{x}$.
+\end{proof}
+
+\begin{theorem}
+    Let $f$ be a bijection of an open subset $U \subseteq R^n$ onto an open subset $V \in \R^n$. If f is differentiable at $a \in U$, $\det\of{D_f\of{a}} \neq 0$, and $f\inv$ is continuous at $b = f\of{a}$, then $f\inv$ is differentiable at $b$ and $D_{f\inv}\of{b} = \left(D_f\of{a}\right)\inv$.
+\end{theorem}
+\begin{proof}
+    Let $T = D_f\of{a}$, $b = f\of{a}$. It suffices to show that $$\lim_{y \to b} \frac{f\inv\of{y} - f\inv\of{b} - T\inv\of{y - b}}{\norm{y - b}} = 0$$
+    But, $$\frac{f\inv\of{y} - f\inv\of{b} - T\inv\of{y-b}}{\norm{y-b}} = -T\inv\of{\frac{y - b - T\of{f\inv\of{y} - f\inv\of{b}}}{\norm{y-b}}}$$
+    So it suffices to show that $$\lim_{y \to b} \frac{y - b - T\of{f\inv\of{y} - f\inv\of{b}}}{\norm{y-b}} = 0$$
+    and this will be done if we show that $$\lim_{k \to \infty} \frac{y_k - b - T\of{f\inv\of{y_k} - f\inv\of{b}}}{\norm{y_k - b}} = 0$$
+    For every sequence $(y_k) \in V \backslash \set{b}$ with $y_k - b$. Let $x_k = f\inv\of{y_k} \in U \backslash \set{a}$ (i.e., $y_k = f\of{x_k}$). Then $x_k \to f\inv\of{b} = a$ because $f\inv$ is continuous at $b$. Thus we need to show that $$\lim_{k \to \infty} \frac{f\of{x_k} - f\of{a} - T\of{x_k - a}}{\norm{f\of{x_k} - f\of{a}}} =$$ $$\lim_{k \to \infty} \left[ \frac{\norm{x_k - x}}{\norm{f\of{x_k} - f\of{a}}} \frac{f\of{x_k} - f\of{a} - T\of{x_k - a}}{\norm{x_k - a}} \right] = \lim_{k \to \infty} A_k B_k = 0$$
+    Now, as $T = D_f\of{a}$, $\lim_{k \to \infty} B_k = 0$ (by the definition of the derivative). So to complete the proof it is enough to show that the sequence $(A_k)$ is bounded. But $$\frac{1}{A_k} = \norm{\frac{f\of{x_k} - f\of{a} - T\of{x_k - a}}{\norm{x_k - a}} + T\of{\frac{x_k - a}{\norm{x_k - a}}}} =$$ $$\norm{B_k + T\of{\frac{x_k - a}{\norm{x_k - a}}}} \geq \norm{T\of{\frac{x_k - a}{\norm{x_k - a}}}} - \norm{B_k}$$
+    and by the lemma, there exists a $c > 0$ such that $\norm{T\of{\frac{x_k-a}{\norm{x_k-a}}}} \geq c$ for all $k$. As $B_k \to 0$, there exists a $k_0$ such that for all $k > k_0$ $\frac{1}{A_k} \geq \frac{c}{2}$ and so for all $k \in \N$ $\frac{1}{A_k} \geq \min \set{\frac{c}{2}, \frac{1}{A_1}, \frac{1}{A_2}, \dots, \frac{1}{A_{k_0}}} > 0$. Hence, $(A_k)$ is bounded.
+\end{proof}
+
+\begin{corollary}
+    Let $f$ be a differentiable homeomorphism of an open subset $U \subseteq \R^n$ onto an open subset $V \subseteq \R^n$. If $\det\of{D_f\of{x}} \neq 0$ for all $x \in U$, then $f$ is a diffeomorphism of $U$ onto $V$. Moreover, if $f \in C^k\of{U}$ then $f$ is a $C^k$ diffeomorphism.
+\end{corollary}
+\begin{proof}
+    Clearly, the assumptions of the previous theorem are satisfied for each $a \in U$, so $f\inv$ is differentiable at each $b = f\of{a}$, and $f$ is thus a diffeomorphism of $U$ onto $V$.
+\end{proof}
+
+\begin{remark}
+    The following example shows that the 1-dimensional Inverse Function Theorem cannot be generalized to $n$-dimensions.
+\end{remark}
+
+\begin{example}[Polar Coordinate Mapping]
+    Let $f: (0, \infty) \times \R$ be given by $f\of{s, t}$
+\end{example}
+
+\begin{theorem}[Inverse Function Theorem (IFT)]
+    Let $f: \Omega \to \R^n$ be a $C^k$ function where $\Omega \subseteq \R^n$ is open (and $k = 1, 2, \dots, \infty$). If $\det \of{D_f\of{a}} \neq 0$ for some $a \in \Omega$, then there exists an open set $U \in \Omega$ with $a \in U$ and an open set $V \subseteq \R^n$ with $f\of{a} \in V$ such that $f \restr U$ is a $C^k$ diffeomorphism of $U$ onto $V$.
+\end{theorem}
+
+\begin{corollary}[Open Mapping Theorem]
+    Let $F: \Omega \to \R^n$ be $C^1$ function where $\Omega \subseteq \R^n$ is open. If $\det\of{D_f\of{x}} \neq 0$ for all $x \in \Omega$, then $f$ is an open wrapping, i.e., for every open subset $W \subseteq \Omega$, $f\of{W}$ is open in $\R^n$.
+\end{corollary}
+\begin{proof}
+    Let $W \subseteq \Omega$ be open. To conclude that $f\of{W}$ is open, it suffices to show that for all $b \in f\of{W}$ there exists an open $V$ such that $b \in V \subseteq f\of{W}$. But $b = f\of{a}$ for some $a \in W$ and $f \restr W$ and $a \in W$ satisfy the assumption of the IFT. Thus, there exists open $U \subseteq W$ and open $V \subseteq \R^n$ such that $a \in U$, $b \in V$ and $f\of{U} = \left(f \restr W\right)\of{U} = V$. Clearly, $b \in V \subseteq f\of{W}$.
+\end{proof}
+
+\begin{corollary}
+    Let $f: \Omega \to \R^n$ bw a $C^k$ function where $\Omega \to \R^n$ is open. If $f$ is injective and $\det\of{D_f\of{x}} \neq 0$ for all $x \in \Omega$, then $f\of{\Omega}$ is open and $f$ is a $C^k$ diffeomorphism of $\Omega$ onto $f\of{\Omega}$.
+\end{corollary}
+\begin{proof}
+    By a previous corollary, it suffices to show that $f\of{\Omega}$ is open and $f$ is a homeomorphism of $\Omega$ onto $f\of{\Omega}$. But by the previous corollary, $f$ is an open mapping, so, in particular, $f\of{\Omega}$ is open. Thus, it remains to prove that $f\inv: f\of{\Omega} \to \Omega$ is continuous. Recall that this will be true if for each open $U \subseteq R^n$, $\left(f\inv\right)\inv\of{U}$ is open relative to $f\of{\Omega}$, i.e., is open in $\R^n$ because $f\of{\Omega}$ is open. But $\left(f\inv\right)\inv\of{U} = \left(f\inv\right)\inv\of{U \cap \Omega} = f\of{U \cap \Omega}$ is indeed open in $R^n$ by the Open Mapping Theorem.
+\end{proof}
+
+\begin{example}[determining a diffeomorphism]
+    The polar coordinate mapping $f\of{r, \theta} = \left(rcos\theta, rsin\theta\right)$ (considered on $(0, \infty) \times \R$), is an open mapping of $(0, \infty) \times \R$ onto $\R^2 \backslash \set{(0,0)}$ because $\det\of{D_f\of{r, \theta}} = r > 0$ for all $(r, \theta) \in (0, \infty) \times \R$.  \\
+    Note that $\varphi = f \restr \left((0, \infty) \times (-\pi, \pi)\right)$ is injective. Hence, by the last corollary $\varphi$ is a $C^\infty$ diffeomorphism on $(0, \infty) \times (-\pi, \pi)$ onto $\varphi\of{(0, \infty) \times (-\pi, \pi)} = \R^2 \backslash \left((-\infty, 0] \times \R\right)$.
+    $$D_{\varphi\inv}\of{rcos\theta, rsin\theta} = \begin{bmatrix} cos\theta & -rsin\theta \\ sin\theta & rcos\theta \end{bmatrix}\inv = \frac{1}{r}\begin{bmatrix} rcos\theta & rsin\theta \\ -sin\theta & cos\theta \end{bmatrix}$$
+    Similarly $\varphi \restr \left((0, \infty) \times (a,b)\right)$, where $b - a = 2\pi$ is a $c^\infty$ diffeomorphism on $(0, \infty) \times (a,b)$ onto $\R^2 \backslash \set{r\of{cos\theta, sin\theta}: r \geq 0}$.
+\end{example}
+
+\begin{definition}[an implicit function]
+    Let $\Omega_n \subseteq \R^n$, $\Omega_m \subseteq \R^m$, $F: \Omega_n \times \Omega_m \to \R^{m}$, and $c \in \R^{m}$. \\
+    Consider the equation \begin{align*}
+        F(x,y) &= c & (x \in \Omega_n, y \in \Omega_m) & (*)
+    \end{align*} which we suppose needs to solved for $y$. If for every $x \in \Omega_n$ this equation has a solution, then by choosing for each $x \in \Omega_n$ a solution $y \in \Omega_m$ and calling it $f\of{x}$, we obtain a function $f: \Omega_n \to \Omega_m$ such that $F\of{x. f\of{x}} = c$ for all $x \in \Omega_n$. Any such function is called an \textbf{implicit function} defined by Eq. $(*)$. \\
+    \begin{note}
+        If for all $x \in \Omega_n$ there exists a unique $y \in \Omega_m$ such that $F\of{x,y} = c$, then Eq. $(*)$ defines a unique implicit function, but in general, implicit functions are not unique.
+    \end{note}
+\end{definition}
+
+\begin{example}
+    Let $n = m = 1$, $\Omega_n = \Omega_m = [-1, 1]$, $F\of{x,y} = x^2 + y^2$, $c = 1$. Then the functions $f_\pm (x) = \pm\sqrt{1 - x^2}$ are implicit functions defined by $(*)$ (i.e., eg. $x^2 + y^2 = 1$) and there are many other implicit functions. \\
+    If we replace $\Omega_m$ by $[0,1]$, then $f_+$ will be the unique implicit function defined by $(*)$ ($f_+\of{x} = \sqrt{1 - x^2}$).
+\end{example}
+
+\begin{question}
+    Under what conditions does an implicit function exist; is unique; is it differentiable? If it is differentiable how can we obtain its derivative?
+\end{question}
+
+\begin{note}
+    Let $F: \Omega \to \R^m$ be a $C^k$ function where $\Omega \subseteq \R{n + m} = \R^n \times \R^m$ is open. We will write the elements of $\R^n + m = \R^n \times \R^m$ as $(x,y)$ where $x \in \R^n$, $y \in \R^m$. Then
+    $$D_f\of{x,y} = \begin{bmatrix}
+        \frac{\partial F_1}{\partial x_1}(x,y) & \dots & \frac{\partial F_1}{\partial x_n}(x,y) & \frac{\partial F_1}{\partial y_1}(x,y) & \dots & \frac{\partial F_1}{\partial y_m}(x,y) \\
+        \vdots & & \vdots & \vdots & & \vdots \\
+        \frac{\partial F_m}{\partial x_1}(x,y) & \dots & \frac{\partial F_m}{\partial x_n}(x,y) & \frac{\partial F_m}{\partial y_1}(x,y) & \dots & \frac{\partial F_m}{\partial y_m}(x,y)
+    \end{bmatrix}$$ with the first $m \times n$ block will be named $\frac{\partial F}{\partial x}(x,y)$ and the second $m \times m$ block will be named $\frac{\partial F}{\partial y}(x,y)$. \\
+    Thus, we can write $D_F\of{x,y} = \begin{bmatrix} \frac{\partial F}{\partial x}(x,y) & \frac{\partial F}{\partial y}(x,y) \end{bmatrix}$
+\end{note}
+
+\begin{theorem}[Implicit Function Theorem (IPFT)]
+    Let $F: \Omega \to \R^m$ be a $C^k$ function where $\Omega \subseteq \R^{n + m} = \R^n \times \R^m$ is open. Suppose that for $(a,b) \in \Omega$ and $c \in \R^m$, $F(a,b) = c$ and $\det \of{\frac{\partial F}{\partial y}(a,b)} \neq 0$. Then there exist open sets $U \subseteq \R^n$ and $V \subseteq \R^m$ that satisfy:
+    \begin{enumerate}
+        \item $(a,b) \in U \times V$,
+        \item for all $x \in U$, there exists a unique $y \in V$ such that $F(x,y) = c$.
+    \end{enumerate}
+    Moreover, the unique implicit function $f: U \to V$ defined by the equation $F\of{x,f\of{x}} = c$ ($x \in U$, $y \in V$) is a $C^k$ function.
+\end{theorem}
+\begin{proof}
+    Define $G: \Omega \to \R^{n + m}$ by $G\of{x,y} = (x, F\of{x.y})$. This is a $C^k$ function, $G\of{a,b} = (a, c)$ and
+    $$D_G\of{x,y} = \begin{bmatrix}
+        I_n & 0 \\
+        \frac{\partial F}{\partial x}(x,y) & \frac{\partial F}{\partial x}(x,y)
+    \end{bmatrix}$$
+    Thus $\det\of{D_G\of{a,b}} = \left(\det I_n\right)\left(\det\of{\frac{\partial F}{\partial y}(a,b)}\right) \neq 0$. \\
+    Thus by the IFT, there exists an open subset $\Omega_1 \subseteq \Omega$ with $(a,b) \in \Omega_1$ and an open subset $\Omega \subseteq \R^{n + m}$ with $(a,c) = G\of{a,b} \in W$ such that $G \restr \Omega_1$ is a $C^k$ diffeomorphism of $\Omega_1$ onto $W$.
+    Let $H = \left(G \restr \Omega_1\right)\inv: W \to \Omega_1$. Then $H\of{x,y} = \left(j\of{x,y}, k\of{x,y}\right)$ where $j: W \to \R^n$ and $k: W \to \R^m$ are $C^k$ functions. Note that $(x,y) = G\of{H\of{x,y}} = \left(j\of{x,y}, F\of{k\of{x,y}}\right)$ for all $(x,y) \in W$. Hence, $j\of{x,y} = x$ and $F\of{k\of{x,y}} = y$ for all $(x,y) \in W$. Thus $H\of{x,y} = \left(x, k\of{x,y}\right)$ and so for all $(x,y) \in W$,
+    \[\left(x, k\of{x,y}\right) \in \Omega_1 \text{ and } F\of{x,k\of{x,y}} = y\]
+    Note that we may assume that $\Omega_1 = U' \times V$ where $U' \subseteq \R^n$ and $V \subseteq \R^m$ are open. [Indeed, $(a,b) \in \Omega_1$ and $\Omega_1$ is open, so there exists an $r > 0$ such that $B^{n + m}_r\of{a,b} \in \Omega_1$. But $B^{n + m}_r\of{a,b} \supseteq B^{n}_{\frac{r}{2}}\of{a} \times B^{m}_{\frac{r}{2}}\of{b}$. So we can take $U' = B^{n}_\frac{r}{2}\of{a}$, $V = B^m_\frac{r}{2}\of{b}$ and replace $\Omega_1$ with $U' \times V$ and $W$ with $G\of{U' \times V}$].
+
+    Moreover, since $(a,c) \in W$, we can find an open set $U$ such that $a \in U \subseteq U'$ and $U \times \set{c} \subseteq W$. Then for all $x \in U$, $(x,c) \in W$ and so $F\of{x, k\of{x,c}} = c$. Thus when $f: U \to V$ is given by $f\of{x} = k\of{x,c}$, then $f$ is an implicit funciton defined by the equation $F(x,y) = c$ (for $x \in U$, $y \in V$). It is clear that $f$ is a $C^k$ function.
+
+    It remains to confirm that for all $x \in U$ there exists a unique $y \in V$ such that $F\of{x,y} = c$. But if $y_1, y_2 \in V$ and $F\of{x,y_1} = c = f\of{x,y_2}$, then $G\of{x,y_1} = (x,c) = G\of{x,y_2}$, and so $y_1 = y_2$ as $G \restr U \times V$ is injective.
+\end{proof}

@@ -1,0 +1,97 @@
+% camiregu 27-feb-2024
+\chapter{Computing higher-dimensional integrals}
+
+%---------------------------------------------
+% DAY 1
+\begin{corollary}
+	Let $f: \bar{\Omega} \to \R$ be a bounded function where $\Omega \subseteq \R^n$ is simple. If $f$ is integrable over one of the sets $\Omega^o, \Omega$, or $\bar{\Omega}$, then $f$ is integrable over all of them and $\int_{\Omega^o} f = \int_\Omega f = \int_{\bar{\Omega}}$.
+\end{corollary}
+\begin{proof}
+	Note that $f$ is integrable over $\partial \Omega$ and over $\partial \Omega \cup \Omega$ because $v\of{\partial \Omega} = v\of{\partial \Omega \cap \Omega} = 0$, hence if $f$ is integrable over $\Omega^o$ then it is also integrable over $\Omega^o \cup (\partial \Omega \cap \Omega) = \Omega$ and over $\bar{\Omega} = \Omega^o \cup \partial \Omega$. The remaining cases are exercises.
+
+	Then $\int_{\Omega} f = \int_{\Omega^o} f + \int_{\partial \Omega \cap \Omega} f = \int+{\Omega^o} f$ and similarly $\int_{\bar{\Omega}} = \int_\Omega f + \int_{\partial \Omega} f = \int_\Omega f$.
+\end{proof}
+
+\begin{theorem}
+	Let $f: \Omega \to [0,\infty]$ be a bounded continuous function, where $\Omega \subseteq R^n$ is simple. If $\int_\Omega f = 0$ then $f\of{x} = 0$ for all $x \in \Omega^o$.
+\end{theorem}
+\begin{proof}
+	Argue by contradiction: suppose there exists an $x_o \in \Omega^o$ such that $f\of{x_o} > 0$. Then by the continuity of $f$ and the openness of $\Omega^o$, there exists a $\delta > 0$ such that $B_\delta\of{x_o} \subseteq \Omega^o$ and for all $x \in B_\delta\of{x_o}$, $f\of{x} > \frac{1}{2} f\of{x_o}$.
+
+	But $B_\delta\of{x_o}$ contains a rectangle. Hence, \[\int_\Omega f \geq \int_R f \geq \int_R \frac{1}{2} f\of{x_o} = \frac{1}{2} f\of{x_o} v\of{r} \geq 0,\] which is a contradiction.
+\end{proof}
+
+\begin{theorem}[Mean Value Theorem for integrals]
+	Let $f: \Omega \to \R$ be integrable over the simple set $\Omega \subseteq \R^n$. Then $\int_\Omega f = \lambda v\of{\Omega}$ where $\inf\set{f\of{x}: x \in \Omega} \leq \lambda \leq \sup\set{f\of{x}: x \in \Omega}$.
+
+	If $\Omega$ is connected and $f$ is continuous, then there exists $x_o \in \Omega$ such that $\int_\Omega f = f\of{x_o} v\of{\Omega}$.
+\end{theorem}
+\begin{proof}
+	We may assume that $v\of{\Omega} > 0$. Clearly, \[m v\of{\Omega} = \int_\Omega m \leq \int_\Omega f \leq \int_\Omega M = M v\of{\Omega}\] where $m = \inf\set{f\of{x}: x \in \Omega}$, $M = \sup\set{f\of{x}: x \in \Omega}$. Hence, $\lambda = \frac{1}{v\of{\Omega}} \int_\Omega f$ will work.
+
+	Next, suppose that $\Omega$ is connected and $f$ is continuous. If $\lambda = M$ then $\int_\Omega M - f = 0$ where $M - f$ is a nonnegative continuous function. Hence, by the preceding theorem, $f\of{x} = M$ for all $x \in \Omega^o$, so any $x_o \in \Omega^o$ will do. If $\lamda = m$, then $\int_\Omega f = m v\of{\Omega}$ and a similar argument applies.
+
+	If $m < \lambda < M$, then by the definition of the infemum and supremum, there exist $x_1, x_2 \in \Omega$ such that $f\of{x_1} < \lambda < f\of{x_2}$. Then $\lambda = f\of{x_o}$ by the IVT.
+\end{proof}
+
+\section{Fubini's Theorem}
+
+Suppose $f: R \to \R$ is a bounded function where $R = [a,b] \times [c,d]$ is a rectangle. Then for each $y \in [c,d]$ and for each $x \in [a,b]$, we can consider "partial" integrals \[g\of{x} = \int_c^d f\of{x,y} dy$ and $h\of{y} = \int_a^b f\of{x,y} dx,\] and then the "iterated" integrals, \[\int_a^b g\of{x} dx = \int_a^b \of{ \int_c^d f\of{x,y} dy} dx \text{ and } \int_c^d h\of{y} dy = \int_c^d \of{\int_a^b f\of{x,y} dx} dy.\]
+
+This approach can also be adapted to $\R^n$, e.g., when $n = 3, R = [a,b] \times [c,d] \times [k,l]$ then we can consider integrated integrals \[\int_a^b \of{ \int_c^d \of{ \int_k^l f\of{x,y,z} dz} dy} dx, int_c^d \of{ \int_k^l \of {\int_a^b f\of{x,y,z} dx} dz} dy,\] and the other four permutations of the order of the integrals.
+
+Let $f: R \to \R$ be a bounded function where $R \subseteq \R^{n+k}$ is a rectangle. Elements of $\R^{n+k} = \R^n \times \R^k$ can be written as $(x,y)$ where $x \in \R^n, y \in \R^k$, and we can write $R = X \times Y$ where $X$ and $Y$ are rectangles in $\R^n$ and $\R^k$, respectively.
+
+\begin{theorem}[Fubini's Theorem]
+	Let $X \subseteq \R^n$ and $Y \subseteq \R^k$ be rectangles and let $f: X \times Y \to \R$ be integrable over $X \times Y$. Suppose that for each $x \in X$ the function $f_x: Y \to \R$, given by $f_x\of{y} = f\of{x,y}$, is integrable over $Y$. Then the function $g: X \to \R$, given by \[g\of{x} = \int_Y f_x = \int_Y f\of{x,y} dy\] is integrable over $X$, and \[\int_{X \times Y} f = \int_X g = \int_X \of{ \int_Y f\of{x,y} dy} dx.\]
+
+	Similarly, if for each $y \in Y$, the function $f^y: X \to \R$, given by $f^y\of{x} = f\of{x,y}$ is integrable over $X$, then the function $h: Y \to \R$, where \[h\of{y} = \int_X f^y = \int_X f\of{x,y} dx\] is integrable over $Y$, and \[\int_{X \times Y} f = \int_Y h = \int_Y \of{ \int_X f\of{x,y} dx} dy.\]
+\end{theorem}
+\begin{proof}
+	We will prove the first part of the theorem. Note that as $f$ is a bounded function, the function $g$ is also bounded, so $\int_{*X} g$ and $\int_X^* g$ exist. To prove the claim, it suffices to show that for all $\varepsilon > 0$, \[ -\varepsilon + \int_{X \times Y} \leq \int_{*X} g \leq \int_X^* g \leq \int_{X \times Y} f + \varepsilon.\]
+
+	Observe that if $\cal{R}$ is a partition of $X$ and $\cal{S}$ is a partition of $Y$, the collection $\cal{T} = \set{R \times S: R \in \cal{R}, S \in \cal{S}}$ is a partition of $X \times Y$. Moreover, given any partition $\cal{P}$ of $X \times Y$, there exists a partition $\cal{R}$ of $X$ and $\cal{S}$ of $Y$ such that $\cal{T} = \set{R \times S: R \in \cal{R}, S \in \cal{S}}$ is a refinement of $\cal{P}$.
+
+	Now, since $f$ is integrable over $X \times Y$, given $\varepsilon > 0$, there exists a partition $\cal{P}$ of $X \times Y$ such that \[-\varepsilon + \int_{X \times Y} f \leq L_{\cal{P}}\of{f} \leq U_{\cal{P}} \of{f} \leq \int_{X \times Y} f + \varepsilon. (*)\] As pointed above, we can find a partition $\cal{R}$ of $X$ and $\cal{S}$ of $Y$ such that $\cal{T} = \set{R \times S: R \in \cal{R}, S \in \cal{S}}$ is a refinement of $\cal{P}$. Note that $(*)$ will hold with $\cal{P}$ replaced by $\cal{T}$ and so we may as well assume that $\cal{P} = \cal{T}$.
+
+	Now, \[L_{\cal{P}}\of{f} = \sum_{P \in \cal{P}} m_P\of{f} v\of{P} = \sum_{(R \times S) \in \cal{R} \times \cal{S}} m_{R \times S}\of{f} v\of{R \times S} = \sum_{(R \times S) \in \cal{R} \times \cal{S}} m_{R \times S}\of{f} v\of{R} v\of{S} = \sum_{R \in \cal{R}} (\sum_{S \in \cal{S}} m_{R \times S}\of{f} v\of{S}) v\of{R}\]
+%---------------------------------------------
+% DAY 2
+	Note that for a fixed $R \in \cal{R}$ and for any $x \in R$, $m_{R \times S}\of{f} = \inf\set{f\of{x',y'}: x' \in R, y' \in S} \leq \inf\set{f\of{x,y'}: y' \in S} = m_S\of{f_x}$, so for any $x \in R$, \[\sum_{S \in \cal{S}} m_{R \times S}\of{f} v\of{s} \leq \sum_{S \in \cal{S}} m_S\of{f_x} v\of{S} \leq \int_{*Y}f_x = \int_Y f_x = g\of{x}.\]
+
+	Hence, \[\sum_{S \in \cal{S}} m_{R \times S}\of{f} v\of{S} \leq \inf\set{g\of{x}: x \in R} = m_R\of{g},\] and thus using the previous, \[L_{\cal{P}}\of{f} \leq \sum_{R \in \cal{R}} m_R\of{g} v\of{R} = L_\cal{R}\of{g} \leq \int_{*R}g.\] An analogous argument shows that \[U_\cal{P}\of{f} \geq U_\cal{R}\of{g} \geq \int_R^* g.\]
+
+	Consequently, using from before, we obtain \[-\varepsilon + \int_{X \times Y} f \leq L_\cal{P}\of{f} \leq \int_{*R} g \leq \int_R^* g \leq U_\cal{P}\of{f} \leq \int_{X \times Y} f + \varepsilon,\] as required.
+\end{proof}
+
+\begin{corollary}
+	Let $X \subseteq \R^n$ and $Y \subseteq \R^k$ be rectangles and let $f: X \times Y \to \R$ be continuous. Then \[\int_{X \times Y} f = \int_{X}\of{\int_Y f\of{x,y}dy}dx = \int_Y \of{\int_X f\of{x,y} dx} dy.\]
+\end{corollary}
+
+\begin{corollary}
+	Let $R = [a_1,b_1] \times [a_2,b_2] \times \cdots \times [a_n,b_n] \subseteq R^n$. If $f: R \to \R$ is continuous, then \[\int_R f = \int_{a_1}^{b_1}\of{\dots\of{\int_{a_{n-1}}^{b_{n-1}}\of{\int_{a_n}^{b_n} f\of{x_1, \dots, x_n} dx_n}dx_n}dx_{n-1} \dots} dx_1 = \int_{a_n}^{b_n} \of{ \dots \of{ \int_{a_1}^{b_1} f\of{x_1,\dots,x_n} dx_1} \dots} dx_n.\]
+\end{corollary}
+
+\begin{example}[an iterated integral]
+	Let $R = [0, \pi] \times [1,2]$ and let $f: R \to \R$ be the function $f\of{x,y} = x\sin\of{xy}$. Compute $\int_R f$ (i.e., find $\int_R x\sin\of{x,y}dxdy$).
+	\[\int_R f = \int_1^2 \of{ \int_0^\pi x\sin\of{xy}dx}dy = \int_0^\pi \of{\int_1^2 x\sin\of{xy}dy}dx = \int_0^\pi \eval{-\cos\of{x,y}}_{y=1}^{y=2} dx = \int_0^\pi \cos\of{x} - \cos\of{2x} dx = \eval{\sin\of{x}}_0^\pi - \eval{\frac{1}{2} \sin\of{2x}}_0^\pi = 0.\]
+
+	So $\int_R f = 0$.
+
+	You can also do this integral in the opposite order, but it will require integration by parts, which is more error-prone and time consuming. Hence the choice of order of integration can be important. (done in lecture, omitted here.)
+\end{example}
+
+\begin{example}[integral of a polynomial]
+	Compute $\int_R f$ where $R = [0,1] \times [-1,2] \times [0,3]$ and $f\of{x,y,z} xyz^2$.
+	\[\int_R f = \int_0^3 \of{ \int_{-1}^2 \of{ \int_0^1 xyz^2 dx} dy} dz = \int_0^3 \of{\int_{-1}^2 \frac{1}{2} yz^2 dy} dz = \int_0^3 \frac{3}{4} z^2 dz = \frac{27}{4}.\]
+\end{example}
+
+Clearly, Fubini's theorem can also be written as \[\int_{X \times Y} f\of{x_1,\dots,x_n,x_{n+1}, \dots, x_{n + k}} dx_1\dots dx_{n + k} = \int_X \of{ \int_Y f\of{x_1,\dots,x_n,x_{n+1},\dots, x_{n+k}} dx_{n+1}\dots dx_{n+ k}} dx_1 \dots dx_n = \int_Y \of{\int_X f\of{x_1,\dots,x_n,x_{n+1},\dots,x_{n+k}} dx_1 \dots dx_n} dx_{n+1} \dots dx_{n+k}.\]
+
+Thus we are splitting the variables $x_1, \dots, x_{n+k}$ into two groups: $x_1,\dots,x_n$ and $x_{n_1},\dots,x_{n+k}$ and integrating with respect to $x_{n+1},\dots,x_{n+k}$ first and then with respect to $x_1, \dots, x_n$ or vice versa.
+
+One can also obtain versions of the theorem where the variables are split into two groups in a different way:
+
+Let $\sigma$ be a permutation of $\set{1,2,\dots,n+k}$, $R = R_1 \times \cdots \times R_{n+k}$ a rectangle in $R^{n+k}$ (where $R_1,R_2,\dots,R_{n+k}$ are intervals in $\R$), and let $f$ be integrable over $R$. Recall that then the function $f_\sigma : R_\sigma \to \R$ where $R_\sigma = R_{\sigma\inv\of{1}} \times \cdots \times R_{\sigma\inv\of{n+k}}$ and $f_\sigma\of{x_1,\dots,x_{n+k}} = f\of{x_{\sigma\of{1}},\dots,x_{\sigma\of{n+k}}}$ is integrable over $R_\sigma$ and $\int_R f = \int_{R_\sigma} f_\sigma$. Write $R_\sigma = X \times Y$ where $X = R_{\sigma\inv\of{1}} \times \cdots \times R_{\sigma\inv\of{n}}, Y=R_{\sigma\inv\of{n+1}} \times \cdots \times R_{\sigma\inv\of{n+k}}$. Assuming that for all $x \in X$, the function $(f_\sigma)_x$ is integrable over $Y$ we then obtain \[ \int_R f = \int_{R_\sigma} f_\sigma = \int_X \of{ \int_Y f_\sigma\of{x,y} dy} dx = \int_X \of{ \int_Y f\of{x_{\sigma\of{1}}, \dots, x_{\sigma\of{n}}, x_{\sigma\of{n+1}}, \dots, x_{\sigma\of{n+k}}} dx_{n+1}\dots dx_{n+k}}dx_1 \dots dx_n\]
+
+E.g., when $n=2, k=1, \sigma=\begin{bmatrix} 1 & 2 & 3 \\ 1 & 3 & 2 \end{bmatrix}, R=R_1 \times R_2 \times R_3$, then $R_\sigma = $

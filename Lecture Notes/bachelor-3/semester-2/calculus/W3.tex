@@ -1,0 +1,154 @@
+% camiregu 2024-jan-23
+\chapter{IPFT Practice and Constraints}
+
+%----------------------------------------------------------------------------------------
+
+\begin{corollary}
+    With the assumptions and notation of the IPFT, let $S = \set{(x,y) \in \Omega: F(x,y) = c}.$ Then $S \cap (U \times V) = \set{(x,y) \in \R^{n + m}: x \in U \text{ and } y = f\of{x}}$.
+\end{corollary}
+
+\begin{remark}
+    Note that when $m=1$, then $\det\of{\frac{\partial F}{\partial y}} = \frac{\partial F}{\partial y}$. So if $\frac{\partial F}{\partial y}\of{a,b} \neq 0$ then the level set $S = \set{(x,y) \in \R^{n+1}: F\of{x,y} = c}$ in a neighbourhood of $(a,b)$ is the graph of the implicit function.
+\end{remark}
+
+\begin{example}(IPFT, level set, and graph)
+    Consider the level set $S = \set{(x,y) \in \R^2: x^3y^2+y^3(x-1)^2 = 1}$ of $F\of{x,y} = x^3y^2 + y^3(x-1)^2$.
+    \begin{enumerate}
+        \item Show that $S$ is not the graph of any function $y = f(x)$, i.e., $S \neq \set{(x,y) \in \R^2: y = f\of{x}}$.
+        \item Show that in a neighbourhood of $(1,1)$, $S$ is the graph of a smooth function $f$ and find the slope of the tangent line to the graph of $f$ at $(1,1)$.
+    \end{enumerate}
+
+    Solutions:
+    \begin{enumerate}
+        \item $(1,-1), (1,1) \in S$, so no such function exists.
+        \item $\eval{\frac{\partial F}{\partial y}\of{1,1} = 2x^3y + 3^2(x-1)^2}_{x=1, y=1} = 2 \neq 0$. So by the IPFT (with $a=b=c=1$) and the corollary there exist open sets $U, V \in \R$ with $(1,1) \in U \times V$ and a smooth function $f: U \to V$ such that $f\of{1} = 1$, $F\of{x, f\of{x}} = 1 = x^3f\of{x}^2 + f\of{x}^3(x-1)^2 = 1$ for all $x \in U$, and $S \cap (U \times V) = \set{(x,y): x \in U \text{ and } y = f\of{x}}$.
+        
+        The slope is $f\inv\of{1}$: Since $x^3 f\of{x}^2 + f\of{x}^3 (x-1)^2 = 1$ for all $x \in U$, so $0 = \frac{\mathrm{d}}{\mathrm{d}x}\left[x^3 f\of{x}^2 + f\of{x}^3 (x-1)^2\right] = 3x^2 f\of{x}^2 + 2x^3 f\of{x} f'\of{x} + 3f\of{x}^2 f'\of{x} (x-1)^2 + 2f\of{x}^3 (x-1)$.
+        When $x = 1$,  $f(1) = 1$, and so $0 = 3 + 2f'(1)$. Thus $f'(1) = \frac{3}{2}$
+    \end{enumerate}
+\end{example}
+
+\begin{example}(Finding the derivative without the function)
+    Consider the problem of solving the system of equations: $\left\{ \begin{matrix} xy^2 + xzu + yv^2 = 3 \\ u^3yz + 2xv - u^2v^2 = 2 \end{matrix} \right.$ (*).
+    for $u$ and $v$ in terms of $x, y, z$ near $x = y = z = u, v= 1$ and computing the partial $\frac{\partial u}{\partial z}, \frac{\partial v}{\partial z}$.
+
+    Let $a = (1,1,1), b = (1,1), c = (3,2),$ and $F: \R^3 \to \R^2 \to \R^2$ be given by 
+    \[F(x,y,z,u,v) = (xy^2 + xzu + yu^2, u^3yz + 2xv - u^2v^2).\]
+    Then $F(a,b) = c$, $\frac{\partial F}{\partial(u,v)} = \begin{bmatrix}
+        xz & 2yv \\ 3u^2yz - 2uv^2 & 2x - 2u^2v
+    \end{bmatrix}$.
+    \[\det\of{\frac{\partial F}{\partial (u,v)}\of{a,b}} =\det \begin{bmatrix} 1 & 2 \\ 1 & 0 \end{bmatrix} = -2 \neq 0.\]
+
+    Hence, by the IPFT there exists a smooth function $f(x,y,z) = (f_1\of{x,y,z}, f_2\of{x,y,z})$ defined on a neighbourhood $U$ of $u = (1,1,1)$ such that $F\of{x,y,z, f\of{x,y,z}} = (3,2) = c$ for all $(x,y,z) \in U$ and $f\of{1,1,1} = (1,1)$: $u = f_1\of{x,y,z}, v = f_2\of{x,y,z}$ are the expressions of $u$ and $v$ in terms of $x,y,z$. To find $\frac{\partial u}{\partial z}$ and $\frac{\partial v}{\partial z}$ we differentiate Eqs(*) with respect to $z$, treating $u$ and $v$ as functions of $x,y,z$:
+    \begin{align*}
+        0 &= \frac{\partial}{\partial z}\of{xy^2 + xzu + yv^2} = xu + xz \frac{\partial u}{\partial z} + 2yv \frac{\partial v}{\partial z} \\
+        0 &= \frac{\partial}{\partial z}\of{u^3yz + 2xv - u^2v^2} = 3u^2 \frac{\partial u}{\partial z} yz + u^3y + 2x \frac{\partial v}{\partial z} - 2u \frac{\partial u}{\partial z}v^2 - u^2 2v \frac{\partial v}{\partial z}
+    \end{align*}
+    With $(x,y,z) = (1,1,1)$, $(u,v) = (1,1)$ we get
+    \[1 + \frac{\partial u}{\partial z} + 2 \frac{\partial v}{\partial z} = 0, \frac{\partial u}{\partial z} + 1 = 0.\]
+
+    Hence, $\frac{\partial f_1}{\partial z} = \frac{\partial u}{\partial z}\of{1,1,1} = -1, \frac{\partial f_2}{\partial z} = \frac{\partial v}{partial z}\of{1,1,1} = 0$.
+\end{example}
+
+\begin{proposition}[Implicit Differentiation]
+    Let $F: \Omega_n \times \Omega_m \to \R^m$ be a $C^1$ function where $\Omega_n \subset \R^n$ and $\Omega_m \subset \R^m$ are open and let $c \in \R^m$. If $f: \Omega_n \to \Omega_m$ is a differentiable function such that $F\of{x, f\of{x}} = c$ for all $x \in \Omega_n$, then
+    \[\frac{\partial F}{\partial y}\of{x, f\of{x}} D_f\of{x} = -\frac{\partial F}{\partial x}\of{x, f\of{x}}\]
+    and
+    \[D_f\of{x} = -\left[\frac{\partial F}{\partial y}\of{x, f\of{x}}\right]\inv \frac{\partial F}{\partial x}\of{x, f\of{x}}\]
+    provided $\det \of{\frac{\partial F}{\partial y}\of{x, f\of{x}}} \neq 0$.
+\end{proposition}
+\begin{proof}
+    Define $g: \Omega_n \to \Omega_n \times \Omega_m$ by $g\of{x} = \left(x, f\of{x}\right)$. Then $g$ is differentiable and 
+    \[D_g \of{x} = \begin{bmatrix} I_n \\ D_f\of{x} \end{bmatrix}.\]
+    Since $(F \circ g)\of{x} = c$, the chain rule yields $0 = D_{F \circ g}\of{x} = D_F\of{g\of{x}} D_g\of{x} = \begin{bmatrix} \frac{\partial F}{\partial x}\of{g\of{x}} & \frac{\partial F}{\partial y}\of{g\of{x}} \end{bmatrix} \begin{bmatrix} I_n \\ D_f\of{x} \end{bmatrix} = \frac{\partial F}{\partial x}\of{x, f\of{x}} + \frac{\partial F}{\partial y}\of{x, f\of{x}} D_f\of{x}$.
+
+    Hence, the result.
+\end{proof}
+
+\section{Constrained Extrema and Lagrange Multipliers}
+
+Let $\Omega \subseteq \R^n$ be open and $f, g_1, g_1, \dots, g_m: \Omega \to \R$ be $C^1$ functions. Suppose that for some $c_1, c_2, \dots, c_m \in \R$, $S = \set{x \in \Omega: g_1\of{x} = c_1, g_2\of{x} = c_2, \dots, g_m\of{x} = c_m} \neq \emptyset$. The problem of finding the extreme values of $f$ on the set $S$ (i.e., the extrema of $f \restr S$) is referred to as the problem of of finding the extreme values of $f$ subject to (or with) the constraints $g_1\of{x} = c_1, \dots, g_m\of{x} = c_m$.
+
+E.g., finding the extreme values of $f\of{x,y,z} = \sin\of{x+y} \cos\of{y+z}$ subject to the constraint $g\of{x,y,z} = x^2 + y^2 + z^2 = 1$ means finding the extreme values of $f$ on the sphere $S_1\of{0,0,0} = \set{(x,y,z): x^2 + y^2 + z^2 = 1}$.
+
+\begin{theorem}
+    Let $f,g: \Omega \to \R$ be $C^1$ functions where $\Omega \subseteq \R^{n+1}$ and let $S = \set{x \in \Omega: g\of{x} = c}$ (where $c \in \R$). If $f \restr S$ attains an extreme value at some $s \in S$ where $\grad g\of{s} \neq 0$, then there exists an $x \in \R$ (called a Lagrange multiplier) such that $\grad f\of{s} = \lambda \grad g\of{s}$.
+\end{theorem}
+\begin{proof}
+    Since $\grad g\of{s} \neq 0$, $\frac{\partial g}{\partial x_i}\of{s} \neq 0$ for some $i = 1, 2, \dots, n + 1$. Let us first consider the case that $\frac{\partial g}{\partial x_{n+1}}\of{s} \neq 0$. Let $a = (s_1, \dots, s_n)$, $b= s_{n+1}$ (so $s = (a,b)$). Then $g\of{a,b} = c$ and $\frac{\partial g}{\partial x_{n+1}}\of{a,b} \neq 0$. Hence by the IPFT there exist open sets $U \in \R^n$, $V \in \R$ such that $s = (a,b) \in U \times V$ and a $C^1$ function $\varphi: U \to V$ such that $\varphi\of{a} = b$ and $g\of{x, \varphi{x}} = c$ (i.e., $(x, \varphi\of{x}) \in S$) for all $x \in U$.
+
+    Define $\tilde{f}: U \to \R$ by $\tilde{f}\of{x} = f\of{x, \varphi\of{x}}$. Clearly, $\tilde{f}$ is a $C^1$ function and $\tilde{f}$ has an extremum at $x = a$, so $\grad \tilde{f}\of{a} = 0 = D_{\tilde{f}}\of{a}$. Note that $\tilde{f} = f \circ h$ where $h: U \to S \subseteq \R^{n+1}$ is given by $h\of{x} = (x, \varphi\of{x})$. Hence, by the Chain Rule
+
+    \[0 = D_{\tilde{f}}\of{a} = D_f\of{h\of{a}} D_h\of{a} = D_f\of{s} \begin{bmatrix} I_n \\ D_\varphi\of{a} \end{bmatrix}\]
+
+    or
+    
+    \[0 = \frac{\partial f}{\partial x_i}\of{s} + \frac{\partial f}{\partial x_{n+1}} + \frac{\partial \varphi}{\partial x_i}\of{a} \forall i = 1, 2, \dots, n.\]
+
+    But by the Implicit Differentiation Formula,
+
+    \[D_\varphi\of{a} = -\left[\frac{\partial g}{\partial x_{n+1}}\of{a, \varphi{a}}\right]\inv \left[\frac{\partial g}{\partial x_1}\of{a, \varphi\of{a}}, \dots, \frac{\partial g}{\partial x_n}\of{a, \varphi{a}} \right]\]
+    \[= -\left[\frac{\partial g}{\partial x_{n+1}}\of{s}\right]\inv \left[\frac{\partial g}{\partial x_1}\of{a, \varphi\of{a}}, \dots, \frac{\partial g}{\partial x_n}\of{s} \right]\]
+
+    Therefore,
+
+    \[0 = \frac{\partial f}{\partial x_1}\of{s} - \frac{\partial f}{\partial x_{n+1}}\of{s} \left(\frac{\partial g}{\partial x_{n+1}}\of{s}\right)\inv \frac{\partial g}{\partial x_i}\of{s} \forall i=1,2,\dots,n\]
+
+    Note that this equality also trivially holds when $i = n+1$. Thus, with $\lambda = \frac{\partial f}{\partial x_{n+1}}\of{s} \left(\frac{\partial g}{\partial x_{n+1}}\of{s}\right)\inv$ we obtain $\grad f\of{s} = \lambda \grad g\of{s}$.
+
+    If $\frac{\partial g}{\partial x_{n+1}}\of{s} = 0$, we can choose $p = 1,2,\dots,n$ such that $\frac{\partial g}{\partial x_p}\of{s} \neq 0$.
+
+    Define a linear isomorphism $T: \R^{n+1} \to \R^{n+1}$ by $T\of{x_1,x_2,\dots,x_{n+1}} = (x_1, x_2, \dots, x_{p-1}, x_{n+1}, x_p, x_{p+1}, \dots, x_n)$, and let $\Omega_* = T\inv\of{\Omega}$, $S_* = T\inv\of{S}$, $s_* = T\inv\of{s}$, $f_* = f \circ T: \Omega_* \to \R$, $g_* = g \circ T: \Omega_* \to \R$. Then $S_* = \set{x \in \Omega_*: g_*\of{x} = c}$ and $f_* \restr S_*$ has an extremum at $s_*$. Moreover, $\frac{\partial g_*}{\partial x_{n+1}}\of{s_*} = \frac{\partial g}{\partial x_p\of{s} \neq 0}$. So by the 1st part of the proof, there exists a $\lambda \in \R$ such that $\grad f_*\of{s_*} = \lambda \grad g_* \of{s_*}$. But
+
+    \[\frac{\partial f_*}{\partial x_i}\of{s*} = \left\{ \begin{matrix}
+        \frac{\partial f}{\partial x_{i}}\of{s} \text{ for } i = 1,2,\dots,p-1 \\
+        \frac{\partial f}{\partial x_{i+1}}\of{s} \text{ for } i = p,p+1,\dots,n \\
+        \frac{\partial f}{\partial x_p}\of{s} \text{ for } i = n + 1
+    \end{matrix} \right.\]
+
+    and similarly for $g_*$. Hence, $\grad f\of{s} = \lambda \grad g\of{s}$.
+\end{proof}
+
+\begin{example}[Minimum distance with the Lagrange multiplier]
+    Find the minimum distance from the point $(1,2,0)$ to the surface $z^2 = x^2 + y^2, z \geq 0$, using the Lagrange multiplier.
+
+    The distance from $(1,2,0)$ to a point $(x,y,z)$ is $d = \sqrt{(x-1)^2 + (y-2)^2 + z^2}$ and it suffices to minimize $d^2$, i.e., the function $f\of{x,y,z} = (x-1)^2 + (y-2)^2 + z^2$ on the set $\tilde{S} = \set{(x,y,z) \in \R^3: x^2 + y^2 - z^2 = 0, z \geq 0}$. Recall that in Lecture 25 we solved this problem by eliminating $z$.
+    
+    In particular, we found that $f$ attains a global min value of $\tilde{S}$ but there does not exist a global max. Note also that $z = 0 \implies x^2 + y^2 = 0$, and $f\of{0,0,0} = 5$ while $f\of{0,1,1} = 3 < 5$. So $f$ attains a global min on $S = \set{(x,y,z): x^2 + y^2 - z^2 = 0 \text{ and } z > 0}$ and does not have a global max on $S$. We can apply our theorem to:
+
+    $\Omega = \set{(x,y,z) \in \R^3: z > 0}$. $f: \Omega \to \R$, $f\of{x,y,z} = (x-1)^2 + (y-2)^2 + z^2$, $g: \Omega \to \R$, $g\of{x,y,z} = x^2 + y^2 - z^2$, and $S = \set{(x,y,z) \in \Omega: g\of{x,y,z} = 0} = \set{(x,y,z) \in \Omega: x^2 + y^2 - z^2 = 0}$ ($c = 0$).
+
+    Note that $\grad g\of{x,y,z} = (2x, 2y, -2z) \neq 0$ for all $(x,y,z) \in \Omega$, so by the theorem if a minimum occurs at $(x,y,z) \in S$ then $\grad f\of{x,y,z} = (2(x-1),2(y-2),2z) = \lambda (2x, 2y, -2z)$ for some $\lambda \in \R$. So we need to solve the system:
+
+    \[\left\{ \begin{matrix}
+        2(x-1) = 2\lambda x \\
+        2(y-2) = 2\lambda y \\
+        2z = -2\lambda z \\
+        x^2 + y^2 -z^2 = 0
+    \end{matrix} \right. \implies \lambda = -1 \implies x = \frac{1}{2}, y = 1 \implies z = \sqrt{\frac{5}{4}}\]
+
+    So a minimum occurs at $\left(\frac{1}{2}, 1, \sqrt{\frac{5}{4}}\right)$ and the min distance is $d_\text{min} = \sqrt{f\of{\frac{1}{2}, 1, \sqrt{\frac{5}{4}}} = \sqrt{\frac{5}{2}}}$.
+\end{example}
+
+\begin{example}[Maximum volume with the Lagrange multiplier]
+    Consider rectangular boxes $[-x,x] \times [-y,y] \times [-z,z]$ ($x,y,z$) incubed in the ellipsoid $\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$ (i.e., with vertices on the ellipsoid). Find the values of $x,y,z$ which maximize the volume of such a box and the maximum volume.
+
+    Intuitively, it seems clear that the maximum exists. Can we confirm this mathematically?
+
+    Note that $\tilde{S} = \set{(x,y,z) \in \R^3: \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1}$ is compact, so by the EVT $f(x,y,z) = 8xyz$ attains its absolute maximum on $\tilde{S}$. It is clear that the maximum value is strictly positive, so (among other possibilities), it is attained at a point where $x,y,z > 0$. Hence, our problem has a solution.
+    
+    Formally we work with the open set $\Omega = \set{(x,y,z): x,y,z > 0}$ with the constraint function $g: \Omega \to \R$ given by $\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$, and the function to maximize is $f\of{x,y,z} = 8xyz$. Note that $\grad g\of{x,y,z} = \left(\frac{2x}{a^2},\frac{2y}{b^2},\frac{2z}{c^2}\right) \neq 0$ for all $(x,y,z) \in \Omega$. By the theorem, the max occurs at a point $(x,y,z) \in S$ where $\grad f\of{x,y,z} = (8yz, 8xz, 8xy) = \lambda \left(\frac{2x}{a^2},\frac{2y}{b^2},\frac{2z}{c^2}\right)$ for some $\lambda \in \R$. So we need to solve the system:
+
+    \[\left\{\begin{matrix}
+        8yz = \lambda \frac{2x}{a^2} \\
+        8xz = \lambda \frac{2y}{b^2} \\
+        8xy = \lambda \frac{2z}{c^2} \\
+        \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1
+    \end{matrix}\right. \implies \begin{matrix}
+        4xyz = \lambda \frac{x^2}{a^2} \\
+        4xyz = \lambda \frac{y^2}{b^2} \\
+        4xyz = \lambda \frac{z^2}{c^2} \\
+    \end{matrix} \implies 2xyz = \lambda \left(\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2}\right) = \lambda\]
+
+    Given that $x,y,z > 0$, $\frac{1}{b} = \frac{x^2}{a^2} = \frac{y^2}{b^2} = \frac{z^2}{c^2} \implies x = \frac{a}{\sqrt{3}}, y = \frac{b}{\sqrt{3}}, z = \frac{c}{\sqrt{3}}$. The max volume is then $f\of{\frac{a}{\sqrt{3}},\frac{b}{\sqrt{3}},\frac{c}{\sqrt{3}}} = \frac{8abc}{3\sqrt{3}}$.
+\end{example}

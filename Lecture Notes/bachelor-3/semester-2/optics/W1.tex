@@ -1,0 +1,119 @@
+% camiregu 2024-jan-09
+\chapter{Radiant Units}
+
+%----------------------------------------------------------------------------------------
+% TODO put the first lecture in here
+\begin{example}[Laser Radiance]
+    \spacebeforelist %TODO
+    \begin{enumerate}
+        \item Solid angle:
+        \item Irradiance: $E_e = \frac{\text{power}}{\text{area}} = $
+        \item Irradiance of Lightbulb:
+        \item Divergence: $\tan \alpha_{\frac{1}{2}} = \frac{\qty{2.5E-3}{\metre}}{\qty{15}{\metre}} \implies$
+    \end{enumerate}
+\end{example}
+
+\begin{definition}[geometrical optics] % change to model
+    Under \textbf{geometrical optics}, we make the following assumptions:
+    \begin{enumerate}
+        \item \textbf{Space} is 3D and is isomorphic to $\R^3$ together with the Euclidean metric
+        \item \textbf{Time} is isomorphic to $\R$ together with the Euclidean metric,
+        \item Mediums are closed, connected subsets of $\R^3$. Every point in space belongs to a medium, and any two mediums are interior-disjoint.
+        \item Light is treated as a particle. That is, it has a well-defined position in space, and its wave properties are ignored.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    The content of the next few lectures will be valid under geometrical optics. 
+\end{remark}
+
+\begin{definition}[a ray]
+    For a particular wave, a \textbf{wavefront} of that wave is a set of all connected points that show the same amplitude over time. A ray describes the direction of propagation of that wave, and is normal to the wavefront.
+\end{definition}
+
+\begin{proposition}[Huygens' Principle]
+    For light under geometrical optics, the following is true:
+    \begin{enumerate}
+        \item Light can be envisioned as a continuous array of discrete sources of light
+        \item The initial arrangement of these sources is called the \textbf{primary wavefront}
+        \item Each point source emits spherical waves, which we call \textbf{wavelets}
+        \item Wavelets form a \textbf{secondary wavefront}
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}[Fermat's Principle]
+    When light propagates between two points, it takes the path of least time.
+    \begin{remark}
+        This was an evolution upon Hero's Principle, which states it takes the path of least distance. Fermat's model is superior in that it accounts for the difference in the speed of light in different mediums, and so shows refraction.
+    \end{remark}
+\end{proposition}
+
+\begin{definition}[index of refraction]
+    The \textbf{index of refraction} of a medium is % TODO
+\end{definition}
+
+%todo define a medium
+
+\begin{definition}[the incident plane]
+    The \textbf{incident plane} of a ray incident on a surface is the plane defined by the direction vector of the ray and the vector normal to the surface. The angle between these vectors is called the \textbf{angle of incidence}.
+\end{definition}
+
+\begin{theorem}[Law of Reflection]
+    When a ray reflects at an interface between two media with different optical properties, the reflected ray:
+    \begin{enumerate}
+        \item remains within the incident plane
+        \item the angle of refraction, $\theta_r$, is equal to the angle of incidence, $\theta_i$
+    \end{enumerate}
+\end{theorem}
+
+\begin{question}
+    When a ray enters a new medium, does it always reflect \textit{and} refract?
+\end{question}
+
+\begin{theorem}[Snell's Law]
+    We can find the index of refraction of a medium by
+    $$n = \frac{c}{v}$$
+    where $n$ is the index of refraction, $c$ is the speed of light in a vacuum, and $v$ is the speed of light in that medium.
+\end{theorem}
+
+\begin{theorem}[Law of Refraction]
+    When light is refracted at two media, the transmitted ray:
+    \begin{enumerate}
+        \item remains in the incident plane
+        \item $n_i \sin \theta_i = n_t \sin \theta_t$ (Snell's Law)
+    \end{enumerate}
+\end{theorem}
+
+% begin quiz in the notes ! light refraction
+
+% begin quiz closer fish
+
+\begin{example}
+    \spacebeforelist
+    \begin{enumerate}
+        \item The distance the light travelled to the surface is shorter than it would be if refraction did not occur.
+        \item by Snell's Law: 
+        \begin{align*}
+            &n_1 \sin \theta_1 = n_2 \sin \theta_2 \\
+            &\sin \theta \approx \tan \theta \approx \theta \\
+            &\tan \theta_1 = \frac{x}{h} \\
+            &\tan \theta_1' = \frac{x}{h'} = \tan \theta_2 \\
+            &n_1 \frac{x}{h} = n_2 \frac{x}{h'} \\
+            &h' = \frac{n_2}{n_1} h = \frac{1}{1.33} \qty{3}{\metre} = \qty{2.25}{\metre}
+        \end{align*}
+    \end{enumerate}
+\end{example}
+
+\begin{definition}[total internal reflection]
+    Consider a ray entering a medium with lower index of refraction than the one it is entering from. In this case, the angle at which the ray exits will always be larger than the angle at which it enters. At some \textbf{critical angle of incidence}, the refracted light will propagate tangent to the surface. Above this critical angle of incidence, the ray will not exit the medium, and we have \textbf{total internal reflection}.
+\end{definition}
+
+\begin{theorem}
+    
+\end{theorem}
+
+Since $n_1 > n_2$, we have $\sin \theta_2 = \frac{n_1}{n_2} \sin \theta_1 > \sin \theta_1$. \\
+Since $\theta_2 \in [0, \frac{\pi}{2}]$, and $\sin$ is increasing in this range, $\theta_2 > \theta_1$. \\
+At some critical angle $\theta_c$, no light is transmitted, i.e. $\theta_2 = \frac{\pi}{2}$. \\
+We compute $\sin \theta_c = \frac{n_2}{n_1} \sin \frac{\pi}{2} = \frac{n_2}{n_1}$. \\
+For $\theta_1 > \theta_c$, the light stays within the media, we call this \textbf{total internal reflection}
